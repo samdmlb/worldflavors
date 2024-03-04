@@ -5,4 +5,5 @@ Rails.application.routes.draw do
     resources :user_recipes, only: [:create]
   end
   resources :user_recipes, only: [:show]
+
 end
