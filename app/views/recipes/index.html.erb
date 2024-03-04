@@ -1,0 +1,42 @@
+<h1>Index des recettes - EN CONSTRUCTION</h1>
+<h1>Liste des pays : quand on clique sur un, une fenetre s'ouvre avec les recettes</h1>
+<div>
+
+  <%# Liste des pays : quand on clique sur un, une fenetre s'ouvre avec ses recettes %>
+  <% @countries.each do |country| %>
+    <button type="button" data-bs-toggle="modal" data-bs-target="#modal-<%= country.name.downcase.remove(" ") %>">
+      <h3><%= country.name %></h3>
+    </button>
+
+  <%# Modal du pays %>
+  <div id="modal-<%= country.name.downcase.remove(" ") %>" class="modal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <%# Header du modal avec le nom du pays et le nombre de recettes réalisées (a faire) %>
+        <div class="modal-header">
+          <h2 class="modal-title"><%= country.name %></h2>
+          <h2>*/3</h2>
+        </div>
+
+        <%# Body du modal avec iteration des recettes du pays %>
+        <div class="modal-body">
+          <% Recipe.where(country_id: country.id).each do |recipe| %>
+            <%= link_to recipe_path(recipe) do %>
+              <h3><%= recipe.name %></h3>
+              <h3><%= recipe.difficulty %></h3>
+            <% end %>
+          <% end %>
+        </div>
+
+        <%# Bouton pour fermer le modal %>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <% end %>
+
+</div>

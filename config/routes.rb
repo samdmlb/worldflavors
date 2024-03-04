@@ -6,5 +6,4 @@ Rails.application.routes.draw do
   end
   resources :user_recipes, only: [:show]
 
-
 end
