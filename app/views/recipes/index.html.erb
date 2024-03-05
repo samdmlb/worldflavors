@@ -2,7 +2,7 @@
 <h1>Liste des pays : quand on clique sur un, une fenetre s'ouvre avec les recettes</h1>
 <div>
 
-  <%# Liste des pays : quand on clique sur un, une fenetre s'ouvre avec ses recettes %>
+  <%# Liste des pays : quand on clique sur un, une fenetre (modal) s'ouvre avec ses recettes %>
   <% @countries.each do |country| %>
     <button type="button" data-bs-toggle="modal" data-bs-target="#modal-<%= country.name.downcase.remove(" ") %>">
       <h3><%= country.name %></h3>
