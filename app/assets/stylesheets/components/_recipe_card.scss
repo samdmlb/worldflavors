@@ -1,0 +1,17 @@
+.recipe-card {
+display: flex;
+background-color: white;
+border-radius: 6px;
+padding-top: 12px;
+padding-bottom: 12px;
+margin-bottom: 12px;
+border-image: round;
+}
+
+.recipe-card-link {
+  text-decoration: none;
+}
+
+.recipe-card-image {
+  border-radius: 8px;
+}
