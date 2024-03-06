@@ -5,3 +5,11 @@
 <h4>Pour <%= @recipe.servings %> personnes</h4>
 <h4>Vous rapporte <%= @recipe.xp %>XP</h4>
 <h4>Difficulté : <%= @recipe.difficulty %></h4>
+
+<% if UserRecipe.where(recipe_id: @recipe.id, user_id: current_user.id).exists? %>
+  <h4>You already cooked this recipe.</h4>
+<% else %>
+  <%= simple_form_for [@recipe, @user_recipe] do |f| %>
+    <%= f.button :submit, 'Validate recipe', class: 'btn btn-primary' %>
+  <% end %>
+<% end %>

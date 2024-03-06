@@ -1,10 +1,15 @@
 class UserRecipesController < ApplicationController
 
   def create
-    @recipe = Recipe.find(params[:id])
-    @user_recipe = current_user.user_recipes.build(recipe: @recipe)
-    @user_recipe.save
-    redirect_to recipe_path(@recipe)
+    @recipe = Recipe.find(params[:recipe_id])
+    @user_recipe = UserRecipe.new
+    @user_recipe.user = current_user
+    @user_recipe.recipe = @recipe
+    if @user_recipe.save
+      redirect_to user_recipe_path(@user_recipe)
+    else
+      render "", status: :unprocessable_entity
+    end
   end
 
   def show
