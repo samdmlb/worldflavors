@@ -11,27 +11,35 @@
   <%# Modal du pays %>
   <div id="modal-<%= country.name.downcase.remove(" ") %>" class="modal" tabindex="-1">
     <div class="modal-dialog">
-      <div class="modal-content">
+      <div class="modal-content rounded">
 
         <%# Header du modal avec le nom du pays et le nombre de recettes réalisées (a faire) %>
         <div class="modal-header">
           <h2 class="modal-title"><%= country.name %></h2>
-          <h2>*/3</h2>
+          <h2> /<%= Recipe.where(country_id: country.id).count %> </h2>
         </div>
 
         <%# Body du modal avec iteration des recettes du pays %>
-        <div class="modal-body">
+        <div class="modal-body d-block pb-0">
           <% Recipe.where(country_id: country.id).each do |recipe| %>
-            <%= link_to recipe_path(recipe) do %>
-              <h3><%= recipe.name %></h3>
-              <h3><%= recipe.difficulty %></h3>
+            <%= link_to recipe_path(recipe), class: "recipe-card-link" do %>
+            <div class="container recipe-card">
+              <div>
+               <%# div de l'image, taille correspondant au figma width:111 & height 111 %>
+               <%= image_tag("burger", size: "111") %>
+              </div>
+                <div>
+                  <h3><%= recipe.name %></h3>
+                  <h3><%= recipe.difficulty %></h3>
+                </div>
+            </div>
             <% end %>
           <% end %>
         </div>
 
         <%# Bouton pour fermer le modal %>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <div class="modal-footer justify-content-center">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Retour</button>
         </div>
 
       </div>
