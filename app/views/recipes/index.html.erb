@@ -15,7 +15,7 @@
 
         <%# Header du modal avec le nom du pays et le nombre de recettes réalisées (a faire) %>
         <div class="modal-header">
-          <h2 class="modal-title"><%= country.name %></h2>
+          <h2 class="modal-title"><%= country.name.capitalize %></h2>
           <h2> /<%= Recipe.where(country_id: country.id).count %> </h2>
         </div>
 
@@ -25,13 +25,40 @@
             <%= link_to recipe_path(recipe), class: "recipe-card-link" do %>
             <div class="container recipe-card">
               <div>
-               <%# div de l'image, taille correspondant au figma width:111 & height 111 %>
+               <%# taille correspondant au figma width:111 & height 111 %>
+               <%# faites pas attention a l image c'est pour tester %>
                <%= image_tag("burger", size: "111") %>
               </div>
-                <div>
-                  <h3><%= recipe.name %></h3>
-                  <h3><%= recipe.difficulty %></h3>
+              <div class="row">
+                <div class="col-12">
+                <h3><%= recipe.name.capitalize %></h3>
                 </div>
+                <div class="col-2 text-center">
+                  <i class="fa-regular fa-clock"></i>
+                </div>
+                <div class="col-10 px-0">
+                  <p><%= country.name.capitalize %></p>
+                </div>
+                <div class="col-2 text-center">
+                  <i class="fa-regular fa-clock"></i>
+                </div>
+                <div class="col-10 px-0">
+                  <p><%= recipe.prep_time %> min</p>
+                </div>
+                <div class="col-2 text-center">
+                   <% difficulty = recipe.difficulty %>
+                    <% if difficulty == "hard" %>
+                      <%= image_tag("hard.png", size: "16") %>
+                    <% elsif difficulty == "medium" %>
+                      <%= image_tag("mid.png", size: "16") %>
+                    <% else %>
+                      <%= image_tag("ezz.png", size: "16") %>
+                    <% end %>
+                </div>
+                <div class="col-10 px-0">
+                <p><%= recipe.difficulty %></p>
+                </div>
+              </div>
             </div>
             <% end %>
           <% end %>
