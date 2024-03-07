@@ -1,0 +1,85 @@
+<%# search bar %>
+<div class="row justify-content-center">
+  <div class="col-sm-8 my-3">
+    <%= form_with url: recipes_path, method: :get, class: "d-flex" do %>
+      <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Recipe, keyword, ingredient..."
+        %>
+      <%= submit_tag "Search", name: "", class: "btn btn-success text-white" %>
+    <% end %>
+  </div>
+</div>
+
+<%# Si il y a une recherche, ça construit la modal et ça l'affiche grace au controller stimulus search_modal %>
+<% if params[:query].present? %>
+
+  <div id="myModal" class="modal" tabindex="-1" data-controller="search-modal" data-search-modal-target="modal">
+    <div class="modal-dialog">
+      <div class="modal-content rounded">
+
+        <%# Header du modal avec le nombre de résultats %>
+        <div class="modal-header">
+          <% if @searched_recipes.empty? %>
+            <h2 class="modal-title">No results</h2>
+          <% else %>
+            <h2 class="modal-title"><%= @searched_recipes.count %> result<%= "s" if @searched_recipes.count > 1 %></h2>
+          <% end %>
+        </div>
+
+        <%# Body du modal avec iteration de l'array searched_recipes qui regroupe les recettes recherchées %>
+        <div class="modal-body d-block pb-0">
+          <% @searched_recipes.each do |recipe| %>
+            <%= link_to recipe_path(recipe), class: "recipe-card-link" do %>
+            <div class="container recipe-card">
+              <div>
+               <%# taille correspondant au figma width:111 & height 111 %>
+               <%# faites pas attention a l image c'est pour tester %>
+               <%= image_tag("burger", size: "111") %>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                <h3><%= recipe.name.capitalize %></h3>
+                </div>
+                <div class="col-2 text-center">
+                  <i class="fa-regular fa-clock"></i>
+                </div>
+                <div class="col-10 px-0">
+                  <p><%= recipe.country.name.capitalize %></p>
+                </div>
+                <div class="col-2 text-center">
+                  <i class="fa-regular fa-clock"></i>
+                </div>
+                <div class="col-10 px-0">
+                  <p><%= recipe.prep_time %> min</p>
+                </div>
+                <div class="col-2 text-center">
+                   <% difficulty = recipe.difficulty %>
+                    <% if difficulty == "hard" %>
+                      <%= image_tag("hard.png", size: "16") %>
+                    <% elsif difficulty == "medium" %>
+                      <%= image_tag("mid.png", size: "16") %>
+                    <% else %>
+                      <%= image_tag("ezz.png", size: "16") %>
+                    <% end %>
+                </div>
+                <div class="col-10 px-0">
+                <p><%= recipe.difficulty %></p>
+                </div>
+              </div>
+            </div>
+            <% end %>
+          <% end %>
+        </div>
+
+        <%# Bouton pour fermer le modal %>
+        <div class="modal-footer justify-content-center">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+<% end %>
