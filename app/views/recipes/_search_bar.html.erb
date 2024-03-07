@@ -1,26 +1,36 @@
-<div class="col-11 mx-auto">
-  <%= render "search_bar" %>
+<%# search bar %>
+<div class="row justify-content-center">
+  <div class="col-sm-8 my-3">
+    <%= form_with url: recipes_path, method: :get, class: "d-flex" do %>
+      <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Recipe, keyword, ingredient..."
+        %>
+      <%= submit_tag "Search", name: "", class: "btn btn-success text-white" %>
+    <% end %>
+  </div>
+</div>
 
-  <%# Liste des pays : quand on clique sur un, une fenetre (modal) s'ouvre avec ses recettes %>
-  <% @countries.each do |country| %>
-    <button type="button" data-bs-toggle="modal" data-bs-target="#modal-<%= country.name.downcase.remove(" ") %>">
-      <h3><%= country.name %></h3>
-    </button>
+<%# Si il y a une recherche, ça construit la modal et ça l'affiche grace au controller stimulus search_modal %>
+<% if params[:query].present? %>
 
-  <%# Modal du pays %>
-  <div id="modal-<%= country.name.downcase.remove(" ") %>" class="modal" tabindex="-1">
+  <div id="myModal" class="modal" tabindex="-1" data-controller="search-modal" data-search-modal-target="modal">
     <div class="modal-dialog">
       <div class="modal-content rounded">
 
-        <%# Header du modal avec le nom du pays et le nombre de recettes réalisées (a faire) %>
+        <%# Header du modal avec le nombre de résultats %>
         <div class="modal-header">
-          <h2 class="modal-title"><%= country.name.capitalize %></h2>
-          <h2> /<%= Recipe.where(country_id: country.id).count %> </h2>
+          <% if @searched_recipes.empty? %>
+            <h2 class="modal-title">No results</h2>
+          <% else %>
+            <h2 class="modal-title"><%= @searched_recipes.count %> result<%= "s" if @searched_recipes.count > 1 %></h2>
+          <% end %>
         </div>
 
-        <%# Body du modal avec iteration des recettes du pays %>
+        <%# Body du modal avec iteration de l'array searched_recipes qui regroupe les recettes recherchées %>
         <div class="modal-body d-block pb-0">
-          <% Recipe.where(country_id: country.id).each do |recipe| %>
+          <% @searched_recipes.each do |recipe| %>
             <%= link_to recipe_path(recipe), class: "recipe-card-link" do %>
             <div class="container recipe-card">
               <div>
@@ -36,7 +46,7 @@
                   <i class="fa-regular fa-clock"></i>
                 </div>
                 <div class="col-10 px-0">
-                  <p><%= country.name.capitalize %></p>
+                  <p><%= recipe.country.name.capitalize %></p>
                 </div>
                 <div class="col-2 text-center">
                   <i class="fa-regular fa-clock"></i>
@@ -65,12 +75,11 @@
 
         <%# Bouton pour fermer le modal %>
         <div class="modal-footer justify-content-center">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Retour</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         </div>
 
       </div>
     </div>
   </div>
-  <% end %>
 
-</div>
+<% end %>
