@@ -1,15 +1,38 @@
-<h1>Show de la recette - EN CONSTRUCTION</h1>
+<div class="col-11">
+  <h1>Show de la recette - EN CONSTRUCTION</h1>
 
-<h3><%= @recipe.name %></h3>
-<h4>Pays : <%= @recipe.country.name %></h4>
-<h4>Pour <%= @recipe.servings %> personnes</h4>
-<h4>Vous rapporte <%= @recipe.xp %>XP</h4>
-<h4>Difficulté : <%= @recipe.difficulty %></h4>
+  <div>
+    <h3><%= @recipe.name %></h3>
+    <h4><%= @recipe.country.name %></h4>
+    <h4>Serves <%= @recipe.servings %></h4>
+    <h4><%= @recipe.xp %>XP</h4>
+    <h4><%= @recipe.difficulty %></h4>
+  </div>
 
-<% if UserRecipe.where(recipe_id: @recipe.id, user_id: current_user.id).exists? %>
-  <h4>You already cooked this recipe.</h4>
-<% else %>
-  <%= simple_form_for [@recipe, @user_recipe] do |f| %>
-    <%= f.button :submit, 'Validate recipe', class: 'btn btn-primary' %>
-  <% end %>
-<% end %>
+  <div>
+    <h3>Ingredients:</h3>
+    <% @recipe_ingredients.each do |ri| %>
+      <p><%= ri.quantity %> <%= ri.unit %> <%= ri.ingredient.name %></p>
+    <% end %>
+  </div>
+
+  <div>
+    <h3>Method:</h3>
+    <% @steps.each do |step| %>
+      <div>
+        <h4>Step <%= step.order_number %>:</h4>
+        <p><%= step.instruction %></p>
+      </div>
+    <% end %>
+  </div>
+
+  <div>
+    <% if UserRecipe.where(recipe_id: @recipe.id, user_id: current_user.id).exists? %>
+      <h4>You already cooked this recipe.</h4>
+    <% else %>
+      <%= simple_form_for [@recipe, @user_recipe] do |f| %>
+        <%= f.button :submit, 'Validate recipe', class: 'btn btn-primary' %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
