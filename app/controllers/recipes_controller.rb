@@ -1,6 +1,7 @@
 class RecipesController < ApplicationController
   def index
     @countries = Country.all
+    @searched_recipes = Recipe.global_search(params[:query]) if params[:query].present?
   end
 
   def show
