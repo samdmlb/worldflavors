@@ -27,11 +27,11 @@ border-image: round;
 
 }
 
-  h3 {
+.recipe-card-content h3 {
     color: $recipes-title;
   }
 
-  p {
+.recipe-card-content p {
     margin: 0px;
     color: $body-text-color;
     justify-content: end;
