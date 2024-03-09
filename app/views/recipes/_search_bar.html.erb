@@ -1,21 +1,85 @@
-<%# search bar %>
-<div class="row justify-content-center">
-  <div class="col-sm-8 my-3">
+<div data-controller="search-modal">
+
+  <div class="d-flex justify-content-center my-4">
+
+    <%# form des filtres + search bar %>
     <%= form_with url: recipes_path, method: :get, class: "d-flex" do %>
-      <%= text_field_tag :query,
-            params[:query],
-            class: "form-control",
-            placeholder: "Recipe, keyword, ingredient..."
-        %>
-      <%= submit_tag "Search", name: "", class: "btn btn-success text-white" %>
+
+      <%# filter button %>
+      <div class="filter-button" data-action="click->search-modal#toggle">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+
+      <%# filter menu %>
+      <div class="filter-menu d-none" data-search-modal-target="filter">
+        <div class="d-flex mx-auto">
+
+          <%# prep time menu %>
+          <div class="px-4 my-2" style="border-right:1px solid #cccccc">
+            <h5>Prep time</h3>
+            <div>
+              <div>
+                <input id="preptime-0" name="preptime" type="radio" value="0" checked="checked"/>
+                <label for="preptime-0">All</label>
+              </div>
+              <div>
+                <input id="preptime-1" name="preptime" type="radio" value="1" />
+                <label for="preptime-1">&lt30min</label>
+              </div>
+              <div>
+                <input id="preptime-2" name="preptime" type="radio" value="2" />
+                <label for="preptime-2">30-60min</label>
+              </div>
+              <div>
+                <input id="preptime-3" name="preptime" type="radio" value="3" />
+                <label for="preptime-3">60+min</label>
+              </div>
+            </div>
+          </div>
+
+          <%# difficulty menu %>
+          <div class="px-4 my-2">
+            <h5>Difficulty</h3>
+            <div>
+              <div>
+                <input id="difficulty-0" name="difficulty" type="radio" value="0" checked="checked"/>
+                <label for="difficulty-0">All</label>
+              </div>
+              <div>
+                <input id="difficulty-1" name="difficulty" type="radio" value="1" />
+                <label for="difficulty-1">Easy</label>
+              </div>
+              <div>
+                <input id="difficulty-2" name="difficulty" type="radio" value="2" />
+                <label for="difficulty-2">Medium</label>
+              </div>
+              <div>
+                <input id="difficulty-3" name="difficulty" type="radio" value="3" />
+                <label for="difficulty-3">Hard</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <%# search bar %>
+      <div class="d-flex">
+        <%= text_field_tag :query,
+              params[:query],
+              class: "form-control search-field",
+              placeholder: "Recipe, keyword, ingredient..." %>
+
+        <button type="submit" class="btn search-loupe ms-2">
+          <i class="fa-solid fa-magnifying-glass search-loupe-icon" style="font-size: 1.5rem"></i>
+        </button>
+      </div>
+
     <% end %>
   </div>
-</div>
 
-<%# Si il y a une recherche, ça construit la modal et ça l'affiche grace au controller stimulus search_modal %>
-<% if params[:query].present? %>
 
-  <div id="myModal" class="modal" tabindex="-1" data-controller="search-modal" data-search-modal-target="modal">
+  <%# Si il y a une recherche, ça construit la modal et ça l'affiche grace au controller stimulus search_modal %>
+  <div id="myModal" class="modal" tabindex="-1" data-search-modal-target="modal">
     <div class="modal-dialog">
       <div class="modal-content rounded">
 
@@ -34,9 +98,9 @@
             <%= link_to recipe_path(recipe), class: "recipe-card-link" do %>
             <div class="container recipe-card">
               <div>
-               <%# taille correspondant au figma width:111 & height 111 %>
-               <%# faites pas attention a l image c'est pour tester %>
-               <%= image_tag("burger", size: "111") %>
+              <%# taille correspondant au figma width:111 & height 111 %>
+              <%# faites pas attention a l image c'est pour tester %>
+              <%= image_tag("burger", size: "111") %>
               </div>
               <div class="row">
                 <div class="col-12">
@@ -55,7 +119,7 @@
                   <p><%= recipe.prep_time %> min</p>
                 </div>
                 <div class="col-2 text-center">
-                   <% difficulty = recipe.difficulty %>
+                  <% difficulty = recipe.difficulty %>
                     <% if difficulty == "hard" %>
                       <%= image_tag("hard.png", size: "16") %>
                     <% elsif difficulty == "medium" %>
@@ -82,4 +146,4 @@
     </div>
   </div>
 
-<% end %>
+</div>
