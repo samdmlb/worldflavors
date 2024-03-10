@@ -1,18 +1,34 @@
-<div class="col-11">
+<div class="col-11 mx-auto" data-controller="servings" data-servings-default-servings="<%= @recipe.servings %>">
   <h1>Show de la recette - EN CONSTRUCTION</h1>
 
   <div>
     <h3><%= @recipe.name %></h3>
     <h4><%= @recipe.country.name %></h4>
-    <h4>Serves <%= @recipe.servings %></h4>
     <h4><%= @recipe.xp %>XP</h4>
     <h4><%= @recipe.difficulty %></h4>
+
+    <%# Choisir le nombre de personnes grace au controller stimulus servings %>
+    <div class="d-flex">
+      <%# bouton - %>
+      <div class="py-1 px-3 bg-white servings-minus" data-action="click->servings#minus">-</div>
+      <%# "Serves" et l'input de servings %>
+      <div class="p-2 bg-white servings-field-div">
+        <span class="servings-serves">Serves</span>
+        <input type="number" class="servings-field" min="1" max="30" value="<%= @recipe.servings %>" data-servings-target="servingsNumber" data-action="input->servings#updateQuantities">
+      </div>
+      <%# bouton + %>
+      <div class="py-1 px-3 bg-white servings-plus" data-action="click->servings#plus">+</div>
+    </div>
   </div>
 
   <div>
     <h3>Ingredients:</h3>
     <% @recipe_ingredients.each do |ri| %>
-      <p><%= ri.quantity %> <%= ri.unit %> <%= ri.ingredient.name %></p>
+      <p>
+        <%# Ajuste la quantité de l'ingrédient en fonction du nombre de servings %>
+        <span data-default-quantity="<%= ri.quantity %>" data-servings-target="ingredientQuantity"></span>
+        <%= ri.unit %> <%= ri.ingredient.name %>
+      </p>
     <% end %>
   </div>
 
