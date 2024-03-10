@@ -5,7 +5,7 @@ export default class extends Controller {
   static targets = ["modal", "filter"]
 
   connect() {
-    if (!(window.location.search == "")) { this.openModal(); }
+    if (window.location.search) { this.openModal(); }
   }
 
   openModal() {
