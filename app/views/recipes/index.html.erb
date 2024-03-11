@@ -1,5 +1,13 @@
-<div class="col-11 mx-auto">
+
+
+    <%# Affichage map %>
+    <%= render 'shared/map' %>
+
+<div class="col-11 mx-auto" style="z-index: 99;">
   <%= render "search_bar" %>
+
+
+
 
   <%# Liste des pays : quand on clique sur un, une fenetre (modal) s'ouvre avec ses recettes %>
   <% @countries.each do |country| %>
@@ -7,7 +15,7 @@
       <h3><%= country.name %></h3>
     </button>
 
-  <%# Modal du pays %>
+   <%# Modal du pays %>
   <div id="modal-<%= country.name.downcase.remove(" ") %>" class="modal" tabindex="-1">
     <div class="modal-dialog">
       <div class="modal-content rounded">
