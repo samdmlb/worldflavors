@@ -1,0 +1,48 @@
+<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <% recipes.each_with_index do |recipe, index| %>
+      <div class="carousel-item <%= 'active' if index.zero? %>">
+        <%= link_to recipe_path(recipe), class: "recipe-card-link" do %>
+          <div class="container recipe-card">
+            <div class="row justify-content-center">
+              <div class="col-12 text-center px-0 ">
+                <%= image_tag("burger", size: "111",) %>
+              </div>
+            </div>
+            <div class="row mb-4">
+              <div class="col-12">
+                <h3><%= recipe.name.capitalize %></h3>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-9">
+                <p>Difficulty</p>
+                <% difficulty = recipe.difficulty %>
+                <% if difficulty == "hard" %>
+                  <%= image_tag("hard.png", size: "36") %>
+                <% elsif difficulty == "medium" %>
+                  <%= image_tag("mid.png", size: "36") %>
+                <% else %>
+                  <%= image_tag("ezz.png", size: "36") %>
+                <% end %>
+              </div>
+                <div class="col-3 d-flex align-items-end ">
+                  <div class="recipe-card-xp ">
+                    <p> <%= recipe.xp %> XP </p>
+                  </div>
+                </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <% end %>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+</div>
