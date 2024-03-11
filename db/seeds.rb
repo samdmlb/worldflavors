@@ -3,14 +3,14 @@
 
 p "Deleting current database..."
 
-Ingredient.destroy_all
 RecipeIngredient.destroy_all
-Recipe.destroy_all
-Step.destroy_all
-Country.destroy_all
-UserRecipe.destroy_all
-User.destroy_all
 UserBadge.destroy_all
+UserRecipe.destroy_all
+Step.destroy_all
+Recipe.destroy_all
+User.destroy_all
+Country.destroy_all
+Ingredient.destroy_all
 Badge.destroy_all
 
 p "Current database deleted!"
