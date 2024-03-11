@@ -3,4 +3,12 @@ class PagesController < ApplicationController
 
   def home
   end
+
+  def dashboard
+    @user = current_user
+  end
+
+  def cookbook
+    @user_recipes = UserRecipe.where(user_id: current_user.id) || []
+  end
 end
