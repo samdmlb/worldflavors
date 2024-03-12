@@ -1,11 +1,21 @@
-<div class="col-11 mx-auto">
+
+
+    <%# Affichage map %>
+    <%= render 'shared/map' %>
+
+<div class="col-11 mx-auto" style="z-index: 99;">
   <%= render "search_bar" %>
+
+
+
 
   <%# Liste des pays : quand on clique sur un, une fenetre (modal) s'ouvre avec ses recettes %>
   <% @countries.each do |country| %>
     <button type="button" data-bs-toggle="modal" data-bs-target="#modal-<%= country.name.downcase.remove(" ") %>">
       <h3><%= country.name %></h3>
     </button>
+
     <%= render 'modal', country: country, recipes_count: Recipe.where(country_id: country.id).count %>
+
   <% end %>
 </div>
