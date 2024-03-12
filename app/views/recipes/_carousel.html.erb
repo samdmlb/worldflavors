@@ -3,13 +3,16 @@
     <% recipes.each_with_index do |recipe, index| %>
       <div class="carousel-item <%= 'active' if index.zero? %>">
         <%= link_to recipe_path(recipe), class: "recipe-card-link" do %>
-          <div class="container recipe-card">
+          <div class="container recipe-card pt-0">
             <div class="row justify-content-center">
-              <div class="col-12 text-center px-0 ">
-                <%= image_tag("burger", size: "111",) %>
+              <div class="col-12 text-center px-0 position-relative">
+                <%= image_tag("burger", height: "300", width: "467", class: "carousel-card-pic") %>
+                <div class="position-absolute bottom-0 start-10">
+                <p class="text-white"> <%= recipe.prep_time %> </p>
+                </div>
               </div>
             </div>
-            <div class="row mb-4">
+            <div class="row mb-4 d-flex align-items-end">
               <div class="col-12">
                 <h3><%= recipe.name.capitalize %></h3>
               </div>
@@ -17,6 +20,7 @@
             <div class="row">
               <div class="col-9">
                 <p>Difficulty</p>
+                <div class="ps-3">
                 <% difficulty = recipe.difficulty %>
                 <% if difficulty == "hard" %>
                   <%= image_tag("hard.png", size: "36") %>
@@ -25,6 +29,7 @@
                 <% else %>
                   <%= image_tag("ezz.png", size: "36") %>
                 <% end %>
+                </div>
               </div>
                 <div class="col-3 d-flex align-items-end ">
                   <div class="recipe-card-xp ">
