@@ -4,9 +4,9 @@ class RecipesController < ApplicationController
     @searched_recipes = Recipe.all
 
     case params[:preptime]
-    when "1" then @searched_recipes = @searched_recipes.where(prep_time: (0..30))
+    when "1" then @searched_recipes = @searched_recipes.where(prep_time: (0..29))
     when "2" then @searched_recipes = @searched_recipes.where(prep_time: (30..60))
-    when "3" then @searched_recipes = @searched_recipes.where(prep_time: (60..))
+    when "3" then @searched_recipes = @searched_recipes.where(prep_time: (61..))
     end
 
     case params[:difficulty]

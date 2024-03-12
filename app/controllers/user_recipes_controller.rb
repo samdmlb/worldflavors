@@ -1,5 +1,4 @@
 class UserRecipesController < ApplicationController
-
   def create
     @recipe = Recipe.find(params[:recipe_id])
     @user_recipe = UserRecipe.new
@@ -14,6 +13,6 @@ class UserRecipesController < ApplicationController
 
   def show
     @user_recipe = UserRecipe.find(params[:id])
+    @user_badges = UserBadge.where(user_id: current_user.id, created_at: @user_recipe.created_at..Time.now)
   end
-
 end
