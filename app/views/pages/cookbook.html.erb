@@ -2,7 +2,7 @@
 
 <% @user_recipes.each do |ur| %>
   <%= link_to recipe_path(ur.recipe), class: "recipe-card-link" do %>
-    <div class="container recipe-card">
+    <div class="container recipe-card d-flex">
       <div>
       <%# taille correspondant au figma width:111 & height 111 %>
       <%# faites pas attention a l image c'est pour tester %>

@@ -41,6 +41,20 @@ badges = [
   { name: "Badge Medium",
     icon: "" },
   { name: "Badge Hard",
+    icon: "" },
+  { name: "Badge Chicken",
+    icon: "" },
+  { name: "Badge Pork",
+    icon: "" },
+  { name: "Badge Beef",
+    icon: "" },
+  { name: "Badge Duck",
+    icon: "" },
+  { name: "Badge Vegetarian",
+    icon: "" },
+  { name: "Badge Vegan",
+    icon: "" },
+  { name: "Badge Dessert",
     icon: "" }
 ]
 
@@ -314,7 +328,7 @@ recipes = [
                           { ingredient_id: Ingredient.find_by(name: "cherry tomato").id,
                             quantity: 800,
                             unit: "g" } ],
-    keywords: ["Vegan", "Vegetarian"]
+    keywords: ["vegan", "vegetarian"]
   },
   {
     recipe: { name: "French onion soup",
@@ -374,6 +388,11 @@ recipes.each do |recipe|
                           difficulty: recipe[:recipe][:difficulty],
                           prep_time: recipe[:recipe][:prep_time],
                           country_id: recipe[:recipe][:country_id])
+
+  recipe[:keywords].each do |keyword|
+    new_recipe.keyword_list.add(keyword)
+  end
+
   new_recipe.save
 
   recipe[:steps].each_with_index do |step, index|

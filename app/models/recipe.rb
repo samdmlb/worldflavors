@@ -6,6 +6,8 @@ class Recipe < ApplicationRecord
   has_many :ingredients, through: :recipe_ingredients
   has_one_attached :photo
 
+  acts_as_taggable_on :keywords
+
   include PgSearch::Model
   pg_search_scope :global_search,
                   against: :name,
