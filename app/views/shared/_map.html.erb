@@ -1,40 +1,9 @@
+<!-- app/views/shared/_map.html.erb -->
 
-<div id='map'>
-  <script>
+<div id="map" data-controller="map" data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
 
-  document.addEventListener( "DOMContentLoaded", setMap())
-  document.addEventListener( "turbo:load", setMap())
-
-
-
-  function setMap() {
+  <!-- ajouter du contenu -->
 
 
 
-  mapboxgl.accessToken = '<%= ENV['MAPBOX_API_KEY'] %>';
-
-  const sw = new mapboxgl.LngLat(-13.8363, 34.4163);
-  const ne = new mapboxgl.LngLat(19.5555, 57.8713);
-  const bounds = new mapboxgl.LngLatBounds(sw, ne);
-
-
-  const map = new mapboxgl.Map({
-    container: 'map', // container ID
-    // style: 'mapbox://styles/mapbox/streets-v12', // style URL
-    // style: 'mapbox://styles/yolande004/cltm38whr007b01pcbwwr5ki9', // style URL
-    style: 'mapbox://styles/yolande004/cltnhcwcy00di01qo1ck2c9jd', // style URL
-    center: [9, 47], // starting position [lng, lat]
-    // zoom: 3, // starting zoom
-  });
-
-  // map.fitBounds(bounds);
-  map.fitBounds(bounds, {
-        padding: 20, // optional padding
-    });
-
-}
-
-
-
-  </script>
 </div>
