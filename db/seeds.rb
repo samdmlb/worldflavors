@@ -29,6 +29,29 @@ p "#{Country.all.length} Countries created!"
 
 #####
 
+p "Creatings badges..."
+
+badges = [
+  { name: "Badge France",
+    icon: "" },
+  { name: "Badge Italy",
+    icon: "" },
+  { name: "Badge Easy",
+    icon: "" },
+  { name: "Badge Medium",
+    icon: "" },
+  { name: "Badge Hard",
+    icon: "" }
+]
+
+badges.each do |badge|
+  Badge.create(name: badge[:name], icon: badge[:icon]) # uniquement si icon est un asset, sinon methode cloudinary
+end
+
+p "#{Badge.all.length} Badges created!"
+
+#####
+
 p "Creating ingredients..."
 
 ingredients = ["strong bread flour", "instant yeast", "salt", "olive oil", "passata",
