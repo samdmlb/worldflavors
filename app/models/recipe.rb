@@ -4,6 +4,7 @@ class Recipe < ApplicationRecord
   has_many :steps
   has_many :recipe_ingredients
   has_many :ingredients, through: :recipe_ingredients
+  has_one_attached :photo
 
   include PgSearch::Model
   pg_search_scope :global_search,

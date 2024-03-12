@@ -2,3 +2,7 @@
 
 <h3>Nom de la recette : <%= @user_recipe.recipe.name %></h3>
 <h3>Email de l'user : <%= @user_recipe.user.email %></h3>
+
+<% @user_badges.each do |user_badge| %>
+  <p>Badge: <%= user_badge.badge.name %></p>
+<% end %>
