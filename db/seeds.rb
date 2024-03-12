@@ -45,7 +45,7 @@ badges = [
 ]
 
 badges.each do |badge|
-  Badge.create(name: badge[:name], icon: badge[:icon]) # uniquement si icon est un asset, sinon methode cloudinary
+  Badge.create(name: badge[:name])
 end
 
 p "#{Badge.all.length} Badges created!"
