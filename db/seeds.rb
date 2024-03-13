@@ -1,16 +1,17 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
+require "open-uri"
 
 p "Deleting current database..."
 
-Ingredient.destroy_all
 RecipeIngredient.destroy_all
-Recipe.destroy_all
-Step.destroy_all
-Country.destroy_all
-UserRecipe.destroy_all
-User.destroy_all
 UserBadge.destroy_all
+UserRecipe.destroy_all
+Step.destroy_all
+Recipe.destroy_all
+User.destroy_all
+Country.destroy_all
+Ingredient.destroy_all
 Badge.destroy_all
 
 p "Current database deleted!"
@@ -26,6 +27,43 @@ countries.each do |country|
 end
 
 p "#{Country.all.length} Countries created!"
+
+#####
+
+p "Creatings badges..."
+
+badges = [
+  { name: "Badge France",
+    icon: "" },
+  { name: "Badge Italy",
+    icon: "" },
+  { name: "Badge Easy",
+    icon: "" },
+  { name: "Badge Medium",
+    icon: "" },
+  { name: "Badge Hard",
+    icon: "" },
+  { name: "Badge Chicken",
+    icon: "" },
+  { name: "Badge Pork",
+    icon: "" },
+  { name: "Badge Beef",
+    icon: "" },
+  { name: "Badge Duck",
+    icon: "" },
+  { name: "Badge Vegetarian",
+    icon: "" },
+  { name: "Badge Vegan",
+    icon: "" },
+  { name: "Badge Dessert",
+    icon: "" }
+]
+
+badges.each do |badge|
+  Badge.create(name: badge[:name])
+end
+
+p "#{Badge.all.length} Badges created!"
 
 #####
 
@@ -57,7 +95,9 @@ recipes = [
               xp: 200,
               difficulty: "easy",
               prep_time: 35,
-              country_id: Country.find_by(name: "italy").id },
+              country_id: Country.find_by(name: "italy").id,
+              url: "https://images.ctfassets.net/nw5k25xfqsik/64VwvKFqxMWQORE10Tn8pY/200c0538099dc4d1cf62fd07ce59c2af/20220211142754-margherita-9920.jpg"
+             },
     steps: ["Make the base: Put the flour into a large bowl, then stir in the yeast and salt. Make a well, pour in 200ml warm water and the olive oil and bring together with a wooden spoon until you have a soft, fairly wet dough. Turn onto a lightly floured surface and knead for 5 mins until smooth. Cover with a tea towel and set aside. You can leave the dough to rise if you like, but it’s not essential for a thin crust.",
             "Make the sauce: Mix the passata, basil and crushed garlic together, then season to taste. Leave to stand at room temperature while you get on with shaping the base.",
             "Roll out the dough: if you’ve let the dough rise, give it a quick knead, then split into two balls. On a floured surface, roll out the dough into large rounds, about 25cm across, using a rolling pin. The dough needs to be very thin as it will rise in the oven. Lift the rounds onto two floured baking sheets.",
@@ -100,7 +140,9 @@ recipes = [
               xp: 200,
               difficulty: "easy",
               prep_time: 30,
-              country_id: Country.find_by(name: "italy").id },
+              country_id: Country.find_by(name: "italy").id,
+              url: "https://assets.afcdn.com/recipe/20211214/125831_w1024h1024c1cx866cy866cxt0cyt292cxb1732cyb1732.jpg"
+            },
     steps: ["Put a large saucepan of water on to boil.",
             "Finely chop the 100g pancetta, having first removed any rind. Finely grate 50g pecorino cheese and 50g parmesan and mix them together.",
             "Beat the 3 large eggs in a medium bowl and season with a little freshly grated black pepper. Set everything aside.",
@@ -148,7 +190,9 @@ recipes = [
               xp: 400,
               difficulty: "hard",
               prep_time: 55,
-              country_id: Country.find_by(name: "italy").id },
+              country_id: Country.find_by(name: "italy").id,
+              url: "https://sugargeekshow.com/wp-content/uploads/2022/01/panna_cotta_recipe-41-of-43-1-1200x1200.jpg"
+             },
     steps: ["For the panna cotta, put the gelatine leaves in a small bowl of cold water to soften – this will take about 5 mins. Meanwhile, pour the cream, milk and 2/3 of the sugar into a pan, split the vanilla pod, scrape out the seeds and add, along with the pod, to the cream mixture. Heat gently until hot, but not bubbling. Remove the gelatine leaves from the water, squeeze out any excess liquid then add, one at a time, to the hot cream. Stir until dissolved. Leave to stand for 20-30 mins until cooled – the vanilla pods should be suspended in the liquid by this point. Strain the mixture through a sieve into 6 serving glasses, then chill for at least 3 hrs.",
             "Toss the strawberries with the cornflour and what's left of the sugar in a saucepan. Place over a medium heat and cook for 4-5 mins, until the released juices thicken and the strawberries soften. Set aside to cool. Once completely cooled, top the set panna cottas with the strawberry mixture. Chill until ready to serve."],
     recipe_ingredients: [ { ingredient_id: Ingredient.find_by(name: "gelatine").id,
@@ -180,7 +224,9 @@ recipes = [
               xp: 400,
               difficulty: "hard",
               prep_time: 105,
-              country_id: Country.find_by(name: "france").id },
+              country_id: Country.find_by(name: "france").id,
+              url: "https://couteaux-et-tirebouchons.com/wp-content/uploads/2017/10/coq-au-vin-recette-gastronomique.jpg"
+             },
     steps: ["Heat 1 tbsp olive oil in a large, heavy-based saucepan or flameproof dish. Tip in 3 trimmed and chopped smoked back bacon rashers and fry until crisp. Remove and drain on kitchen paper.",
             "Add 12 peeled shallots to the pan and fry, stirring or shaking the pan often, for 5-8 mins until well browned all over. Remove and set aside with the bacon.",
             "Take 2 chicken legs, 4 chicken thighs and 2 boneless chicken breasts, all with skin removed and pat dry with kitchen paper.",
@@ -256,7 +302,8 @@ recipes = [
               xp: 300,
               difficulty: "medium",
               prep_time: 140,
-              country_id: Country.find_by(name: "france").id },
+              country_id: Country.find_by(name: "france").id,
+              url: "https://zenaskitchen.com/wp-content/uploads/2022/02/ratatouille-1.jpg" },
     steps: ["Heat the grill to high. Lay the pepper quarters skin-side up on a baking tray and grill until the skins are black and charred. Tip into a bowl, cover and leave to cool. Peel the charred skin off the peppers, then cut into strips, and toss back in the juices collected in the bowl. Tie the basil stalks and thyme sprig together using kitchen string and set aside.",
             "Heat the oven to 160C/140C fan/ gas 4. Heat the olive oil in a flameproof casserole dish and fry the courgettes and aubergine for 15 mins until nicely browned. You may need to do this in batches, adding more oil to the pan as needed so the pan is never dry.",
             "Scoop the veg out of the pan and set aside. Add a drizzle more oil, tip in the onion and cook for another 15 mins until softened and starting to brown. Add the garlic and leave to sizzle for a moment. Scatter with sugar, then leave for a minute to caramelise and splash in the vinegar. Stir in the cooked vegetables along with the pepper juice, season generously, pour over the cans of tomatoes and bring everything to a simmer.",
@@ -291,7 +338,7 @@ recipes = [
                           { ingredient_id: Ingredient.find_by(name: "cherry tomato").id,
                             quantity: 800,
                             unit: "g" } ],
-    keywords: ["Vegan", "Vegetarian"]
+    keywords: ["vegan", "vegetarian"]
   },
   {
     recipe: { name: "French onion soup",
@@ -299,7 +346,9 @@ recipes = [
               xp: 200,
               difficulty: "easy",
               prep_time: 70,
-              country_id: Country.find_by(name: "france").id },
+              country_id: Country.find_by(name: "france").id,
+              url: "https://www.onceuponachef.com/images/2019/02/french-onion-soup-1-760x970.jpg"
+            },
     steps: ["Melt the butter with the olive oil in a large heavy-based pan. Add the onions and fry with the lid on for 10 mins until soft.",
             "Sprinkle in the sugar and cook for 20 mins more, stirring frequently, until caramelised. The onions should be really golden, full of flavour and soft when pinched between your fingers. Take care towards the end to ensure that they don’t burn.",
             "Add the garlic cloves for the final few minutes of the onions’ cooking time, then sprinkle in the plain flour and stir well.",
@@ -343,14 +392,21 @@ recipes = [
 #####
 
 p "Creating recipes..."
-
 recipes.each do |recipe|
+  file = URI.parse(recipe[:recipe][:url]).open
+
   new_recipe = Recipe.new(name: recipe[:recipe][:name],
                           servings: recipe[:recipe][:servings],
                           xp: recipe[:recipe][:xp],
                           difficulty: recipe[:recipe][:difficulty],
                           prep_time: recipe[:recipe][:prep_time],
                           country_id: recipe[:recipe][:country_id])
+  new_recipe.photo.attach(io: file, filename: "#{recipe[:recipe][:name].delete(' ').downcase}.jpg", content_type: "image/jpg")
+
+  recipe[:keywords].each do |keyword|
+    new_recipe.keyword_list.add(keyword)
+  end
+
   new_recipe.save
 
   recipe[:steps].each_with_index do |step, index|

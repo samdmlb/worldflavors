@@ -1,9 +1,8 @@
 $body-text-color: black;
-$recipes-title: red;
+$recipes-title: black;
 // a changer en fonction de notre palette
 
 .recipe-card {
-display: flex;
 background-color: white;
 border-radius: 6px;
 padding-top: 12px;
@@ -29,6 +28,8 @@ border-image: round;
 
 .recipe-card h3 {
     color: $recipes-title;
+    font-size: 20px;
+    margin-bottom: 0px;
   }
 
 .recipe-card p {
@@ -51,4 +52,14 @@ border-image: round;
     align-items: center;
     justify-content: end;
     margin-right: 12px;
+  }
+
+  .recipe-card-xp  {
+    border: 1px solid grey;
+    border-radius: 30px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 12px;
+    padding-right: 12px;
+    background-color: rgba(0,0,0,0.2);
   }

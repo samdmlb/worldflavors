@@ -1,0 +1,56 @@
+.homepage h1 {
+  font-size: 48px;
+  font-weight: bold;
+  color: $my-green;
+}
+
+.homepage input {
+  border-radius: 10px;
+}
+
+.homepage input:focus {
+  outline: none !important;
+  border:1px solid $my-green !important;
+  box-shadow: 0 0 10px $my-green !important;
+}
+
+.homepage input:checked {
+  background-color: $my-green !important;
+}
+
+.homepage a {
+  color: $my-green;
+  font-size: 14px;
+  margin-bottom: none;
+}
+
+.homepage a:hover {
+  color: #7A9D2A;
+}
+
+.bouton-login {
+  padding: 8px 32px;
+  background-color: $my-green;
+  color: white;
+  font-size: 20px;
+  border-radius: 10px;
+}
+
+.bouton-login:hover {
+  background-color: #7A9D2A;
+  color: white;
+}
+
+.bouton-login-little {
+  padding: 4px 16px;
+  background-color: $my-green;
+  color: white;
+  font-size: 16px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+}
+
+.bouton-login-little:hover {
+  background-color: #7A9D2A;
+  color: white;
+}

@@ -1,0 +1,16 @@
+.modal-content{
+  border-radius: 10px;
+}
+
+.modal-footer .btn {
+  background-color: $my-yellow;
+  border-radius: 10px;
+  border: 0px;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.modal-footer {
+  background-color: rgba(255, 255, 255, 0);
+  border: none;
+}

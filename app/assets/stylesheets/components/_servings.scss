@@ -1,0 +1,48 @@
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+  text-align: center;
+}
+
+.servings-field {
+  width: 1.5em;
+  border: none;
+  border-radius: 5px;
+}
+
+.servings-field:focus {
+  outline: none !important;
+  box-shadow: 0 0 2px $my-green !important;
+}
+
+.servings-field-div {
+  border: 1px solid $my-green;
+}
+
+.servings-minus {
+  border: 1px solid $my-green;
+  border-right: none !important;
+  border-radius: 10px 0px 0px 10px;
+  font-size: 20px;
+  margin: none;
+  cursor: pointer;
+}
+
+.servings-plus {
+  border: 1px solid $my-green;
+  border-left: none !important;
+  border-radius: 0px 10px 10px 0px;
+  font-size: 20px;
+  margin: none;
+  cursor: pointer;
+}
+
+.servings-serves {
+  cursor: default;
+}

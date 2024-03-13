@@ -1,0 +1,46 @@
+.recipe-show-img {
+  max-height: 500px;
+  height: auto;
+  max-width: 100%;
+  margin-top: 3vh;
+}
+
+.bouton-validate {
+  padding: 8px 32px;
+  background-color: $my-green;
+  color: white;
+  font-size: 20px;
+  border-radius: 10px;
+}
+
+.bouton-validate:hover {
+  background-color: #7A9D2A;
+  color: white;
+}
+
+.bouton-invalid {
+  padding: 8px 32px;
+  background-color: white;
+  color: $my-green;
+  font-size: 18px;
+  border: 1px solid $my-green;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.rounded-10 {
+  border-radius: 10px;
+}
+
+.check-circle {
+  display: flex;
+  border: 2px solid $my-green;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  color: $my-green;
+  font-size: 24px;
+  margin-left: 8px;
+  align-items:center;
+  justify-content:center;
+}

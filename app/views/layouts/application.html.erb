@@ -7,16 +7,31 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.0.0/css/flag-icons.min.css"
+    />
     <%= javascript_importmap_tags %>
+
+    <%# Installation de MapBox %>
+    <%# <script src='https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.js'></script> %>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.css' rel='stylesheet' />
+
   </head>
 
   <body>
+
+
+
+
     <%= render "shared/flashes" %>
 
-    <div class="body-margin">
+
+    <div class="<%= "body-margin" unless current_page?(root_path) || current_page?(new_user_registration_path) || current_page?(new_user_password_path) %>">
       <%= yield %>
     </div>
 
-    <%= render "shared/new_navbar" %>
+    <%= render "shared/new_navbar" unless current_page?(root_path) || current_page?(new_user_registration_path) || current_page?(new_user_password_path) %>
+
   </body>
 </html>

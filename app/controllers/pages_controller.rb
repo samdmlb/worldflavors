@@ -9,4 +9,7 @@ class PagesController < ApplicationController
     # @last_dish = UserRecipe.last.recipe.name
   end
 
+  def cookbook
+    @user_recipes = UserRecipe.where(user_id: current_user.id) || []
+  end
 end

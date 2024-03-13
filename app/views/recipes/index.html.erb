@@ -1,5 +1,13 @@
-<div class="col-11 mx-auto">
+
+
+    <%# Affichage map %>
+    <%= render 'shared/map' %>
+
+<div class="col-11 mx-auto" style="z-index: 99;">
   <%= render "search_bar" %>
+
+
+
 
   <%# Liste des pays : quand on clique sur un, une fenetre (modal) s'ouvre avec ses recettes %>
   <% @countries.each do |country| %>
@@ -7,70 +15,7 @@
       <h3><%= country.name %></h3>
     </button>
 
-  <%# Modal du pays %>
-  <div id="modal-<%= country.name.downcase.remove(" ") %>" class="modal" tabindex="-1">
-    <div class="modal-dialog">
-      <div class="modal-content rounded">
+    <%= render 'modal', country: country, recipes_count: Recipe.where(country_id: country.id).count %>
 
-        <%# Header du modal avec le nom du pays et le nombre de recettes réalisées (a faire) %>
-        <div class="modal-header">
-          <h2 class="modal-title"><%= country.name.capitalize %></h2>
-          <h2> /<%= Recipe.where(country_id: country.id).count %> </h2>
-        </div>
-
-        <%# Body du modal avec iteration des recettes du pays %>
-        <div class="modal-body d-block pb-0">
-          <% Recipe.where(country_id: country.id).each do |recipe| %>
-            <%= link_to recipe_path(recipe), class: "recipe-card-link" do %>
-            <div class="container recipe-card">
-              <div>
-               <%# taille correspondant au figma width:111 & height 111 %>
-               <%# faites pas attention a l image c'est pour tester %>
-               <%= image_tag("burger", size: "111") %>
-              </div>
-              <div class="row">
-                <div class="col-12">
-                <h3><%= recipe.name.capitalize %></h3>
-                </div>
-                <div class="col-2 text-center">
-                  <i class="fa-regular fa-clock"></i>
-                </div>
-                <div class="col-10 px-0">
-                  <p><%= country.name.capitalize %></p>
-                </div>
-                <div class="col-2 text-center">
-                  <i class="fa-regular fa-clock"></i>
-                </div>
-                <div class="col-10 px-0">
-                  <p><%= recipe.prep_time %> min</p>
-                </div>
-                <div class="col-2 text-center">
-                   <% difficulty = recipe.difficulty %>
-                    <% if difficulty == "hard" %>
-                      <%= image_tag("hard.png", size: "16") %>
-                    <% elsif difficulty == "medium" %>
-                      <%= image_tag("mid.png", size: "16") %>
-                    <% else %>
-                      <%= image_tag("ezz.png", size: "16") %>
-                    <% end %>
-                </div>
-                <div class="col-10 px-0">
-                <p><%= recipe.difficulty %></p>
-                </div>
-              </div>
-            </div>
-            <% end %>
-          <% end %>
-        </div>
-
-        <%# Bouton pour fermer le modal %>
-        <div class="modal-footer justify-content-center">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Retour</button>
-        </div>
-
-      </div>
-    </div>
-  </div>
   <% end %>
-
 </div>

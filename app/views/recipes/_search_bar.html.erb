@@ -1,8 +1,10 @@
+
 <div data-controller="search-modal">
 
   <div class="d-flex justify-content-center my-4">
 
     <%# form des filtres + search bar %>
+
     <%= form_with url: recipes_path, method: :get, class: "d-flex" do %>
 
       <%# filter button %>
@@ -80,7 +82,7 @@
 
   <%# Si il y a une recherche, ça construit la modal et ça l'affiche grace au controller stimulus search_modal %>
   <div id="myModal" class="modal" tabindex="-1" data-search-modal-target="modal">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content rounded">
 
         <%# Header du modal avec le nombre de résultats %>
@@ -96,7 +98,7 @@
         <div class="modal-body d-block pb-0">
           <% @searched_recipes.each do |recipe| %>
             <%= link_to recipe_path(recipe), class: "recipe-card-link" do %>
-            <div class="container recipe-card">
+            <div class="container recipe-card d-flex">
               <div>
               <%# taille correspondant au figma width:111 & height 111 %>
               <%# faites pas attention a l image c'est pour tester %>
