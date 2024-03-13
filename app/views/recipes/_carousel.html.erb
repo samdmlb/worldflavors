@@ -6,7 +6,8 @@
           <div class="container recipe-card pt-0">
             <div class="row justify-content-center">
               <div class="col-12 text-center px-0 position-relative">
-                <%= image_tag("burger", height: "300", width: "467", class: "carousel-card-pic") %>
+<%# height: "300", width: "467" %>
+                <%= cl_image_tag recipe.photo.key, height: 300, width: 467, crop: :fill %>
                 <div class="position-absolute bottom-0 start-0">
                 <p class="text-white mb-4 ms-2"> <%= recipe.prep_time %> min </p>
                 </div>

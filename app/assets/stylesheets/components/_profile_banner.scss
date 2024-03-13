@@ -1,0 +1,22 @@
+.profile-banner {
+  display: flex;
+  align-items: start;
+  justify-content: space-evenly;
+  padding: 20px;
+
+  img {
+    height: 200px;
+    width: 200px;
+    border: solid 2px black;
+    border-radius: 50%;
+  }
+
+  h1 {
+    margin-top: 40px;
+  }
+
+  p {
+    text-align: center;
+
+  }
+}
