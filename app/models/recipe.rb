@@ -24,4 +24,11 @@ class Recipe < ApplicationRecord
 
     return "#{prep_time} min"
   end
+
+  def country_flag(country)
+    country_hash = {  france: "fi-fr",
+                      italy: "fi-it" }
+
+    return country_hash[country.to_sym]
+  end
 end

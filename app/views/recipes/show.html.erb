@@ -1,17 +1,49 @@
 <div class="col-11 mx-auto" data-controller="servings" data-servings-default-servings="<%= @recipe.servings %>">
 
+
   <div>
-    <%= image_tag("burger", class: "recipe-show-img") %>
+    <%= image_tag("burger", class: "recipe-show-img rounded-10 shadow") %>
   </div>
 
-  <div>
-    <h1><%= @recipe.name %></h1>
-    <h4><%= @recipe.country.name.capitalize %></h4>
-    <h4><%= @recipe.xp %>XP</h4>
-    <h4><%= @recipe.difficulty %></h4>
-    <h4><%= @recipe.min_to_h(@recipe.prep_time) %></h4>
 
-    <%# Choisir le nombre de personnes grace au controller stimulus servings %>
+  <div class="rounded-10 shadow-sm bg-white p-3 my-3">
+    <h1><%= @recipe.name %></h1>
+
+    <div class="d-flex justify-content-between">
+      <h4><span class="fi <%= @recipe.country_flag(@recipe.country.name) %>"></span> <%= @recipe.country.name.capitalize %></h4>
+
+      <% if UserRecipe.where(recipe_id: @recipe.id, user_id: current_user.id).exists? %>
+        <div class="d-flex">
+          <h4 style="color: rgba(0,0,0,0.4)"><s><%= @recipe.xp %>XP</s></h4>
+          <div class="check-circle">✓</div>
+        </div>
+      <% else %>
+        <h4><%= @recipe.xp %>XP</h4>
+      <% end %>
+    </div>
+
+    <div class="d-flex">
+      <% difficulty = @recipe.difficulty %>
+      <% if difficulty == "hard" %>
+        <%= image_tag("hard.png", size: "28") %>
+      <% elsif difficulty == "medium" %>
+        <%= image_tag("mid.png", size: "28") %>
+      <% else %>
+        <%= image_tag("ezz.png", size: "28") %>
+      <% end %>
+      <h4 class="ms-2"><%= @recipe.difficulty.capitalize %></h4>
+    </div>
+
+    <h4><i class="fa-regular fa-clock"></i> <%= @recipe.min_to_h(@recipe.prep_time) %></h4>
+
+    <% @recipe.keyword_list.each do |keyword| %>
+      <h4 class="keyword <%= "kw-" + keyword %>"><%= keyword.capitalize %></h4>
+    <% end %>
+  </div>
+
+
+  <%# Choisir le nombre de personnes grace au controller stimulus servings %>
+  <div class="d-inline-block shadow-sm">
     <div class="d-flex">
       <%# bouton - %>
       <div class="py-1 px-3 bg-white servings-minus" data-action="click->servings#minus">-</div>
@@ -25,8 +57,8 @@
     </div>
   </div>
 
-  <div>
-    <h3>Ingredients:</h3>
+  <div class="rounded-10 shadow-sm bg-white p-3 my-3">
+    <h2 class="mb-3">Ingredients:</h2>
     <% @recipe_ingredients.each do |ri| %>
       <p>
         <%# Ajuste la quantité de l'ingrédient en fonction du nombre de servings %>
@@ -36,8 +68,9 @@
     <% end %>
   </div>
 
-  <div>
-    <h3>Method:</h3>
+
+  <div class="rounded-10 shadow-sm bg-white p-3 my-3">
+    <h2 class="mb-3">Method:</h2>
     <% @steps.each do |step| %>
       <div>
         <h4>Step <%= step.order_number %>:</h4>
@@ -46,9 +79,10 @@
     <% end %>
   </div>
 
+
   <div class="d-flex justify-content-around mt-4">
     <% if UserRecipe.where(recipe_id: @recipe.id, user_id: current_user.id).exists? %>
-      <div class="bouton-invalid">You already cooked this recipe.</div>
+      <div class="bouton-invalid">You already cooked this recipe</div>
     <% else %>
       <%= simple_form_for [@recipe, @user_recipe] do |f| %>
         <%= f.button :submit, 'Validate recipe', class: 'bouton-validate' %>

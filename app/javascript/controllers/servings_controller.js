@@ -36,7 +36,7 @@ export default class extends Controller {
       if (!servings || servings < 1 || servings > 30) { servings = defaultServings }
       const defaultQuantity = parseFloat(element.dataset.defaultQuantity);
       const currentQuantity = defaultQuantity * (servings / defaultServings);
-      element.textContent = Math.round(currentQuantity * 2) / 2;
+      element.textContent = (Math.round(currentQuantity * 2) / 2) == 0 ? 0.5 : Math.round(currentQuantity * 2) / 2;
     });
   }
 }
