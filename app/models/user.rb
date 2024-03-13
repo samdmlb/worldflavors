@@ -6,4 +6,8 @@ class User < ApplicationRecord
 
   has_many :user_recipes
   has_many :user_badges
+
+  has_one_attached :photo
+
+  validates :username, presence: true, uniqueness: true
 end

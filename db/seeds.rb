@@ -34,7 +34,7 @@ p "Creatings badges..."
 
 badges = [
   { name: "Badge France",
-    icon: "" },
+    icon: "burger" },
   { name: "Badge Italy",
     icon: "" },
   { name: "Badge Easy",
@@ -60,7 +60,11 @@ badges = [
 ]
 
 badges.each do |badge|
-  Badge.create(name: badge[:name])
+  new_badge = Badge.new(name: badge[:name])
+
+  new_badge.icon = badge[:icon] unless badge[:icon].empty?
+
+  new_badge.save
 end
 
 p "#{Badge.all.length} Badges created!"

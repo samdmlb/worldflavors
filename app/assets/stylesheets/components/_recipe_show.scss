@@ -1,7 +1,8 @@
 .recipe-show-img {
-  max-height: 500px;
+  object-fit: cover;
+  max-height: 300px;
   height: auto;
-  max-width: 100%;
+  width: 100%;
   margin-top: 3vh;
 }
 
@@ -30,6 +31,14 @@
 
 .rounded-10 {
   border-radius: 10px;
+}
+
+.rounded-10-top {
+  border-radius: 10px 10px 0px 0px;
+}
+
+.rounded-10-bottom {
+  border-radius: 0px 0px 10px 10px;
 }
 
 .check-circle {
