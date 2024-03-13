@@ -1,1 +1,73 @@
+<div class="profile-banner">
+  <%= image_tag("add-badge-placeholder.png")%>
+  <div>
+    <h1>Waren</h1>
+    <p>200xp</p>
+  </div>
+</div>
 
+
+
+<div class="badges-container">
+  <h1>Showcase your badges</h1>
+  <div class="badges">
+    <%= link_to root_path do %>
+      <%= button_tag(type: "button", class: "round-btn") do %>
+        <%= image_tag("add-badge-placeholder.png") %>
+      <% end %>
+    <% end %>
+
+     <%= link_to root_path do %>
+      <%= button_tag(type: "button", class: "round-btn") do %>
+        <%= image_tag("add-badge-placeholder.png") %>
+      <% end %>
+    <% end %>
+
+     <%= link_to root_path do %>
+      <%= button_tag(type: "button", class: "round-btn") do %>
+        <%= image_tag("add-badge-placeholder.png") %>
+      <% end %>
+    <% end %>
+
+  </div>
+</div>
+
+
+
+<div class="stats-card-container">
+  <div class="stats-card" data-bs-toggle="modal" data-bs-target="#lastdish">
+    <h3>The last dish</h3>
+    <%= image_tag("card-lastdish.jpg") %>
+    <h3>you have done</h3>
+  </div>
+  <div class="stats-card" data-bs-toggle="modal" data-bs-target="#lastdish">
+    <h3>Your average</h3>
+    <%= image_tag("card-avr-cookingtime.jpg") %>
+    <h3>cooking time</h3>
+  </div>
+  <div class="stats-card" data-bs-toggle="modal" data-bs-target="#lastdish">
+    <h3>Your favorite</h3>
+    <%= image_tag("card-fav-destination.jpg") %>
+    <h3>destination</h3>
+  </div>
+  <div class="stats-card" data-bs-toggle="modal" data-bs-target="#lastdish">
+    <h3>Your favorite</h3>
+    <%= image_tag("card-fav-ingredient.jpg") %>
+    <h3>ingredient</h3>
+  </div>
+</div>
+
+
+<div class="modal fade" id="lastdish" tabindex="-1" aria-labelledby="lastdishLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="centered-item">
+          <div class="modal-card">
+            <h4><%= @last_dish %></h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
