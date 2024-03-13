@@ -191,7 +191,7 @@ recipes = [
               difficulty: "hard",
               prep_time: 55,
               country_id: Country.find_by(name: "italy").id,
-              url: "https://sugargeekshow.com/wp-content/uploads/2022/01/panna_cotta_recipe-41-of-43-1-1200x1200.jpg"
+              url: "https://img.delicious.com.au/hF-Hsp-j/w1200/del/2023/11/vanilla-yoghurt-panna-cotta-with-sumac-strawberries-and-arak-strawberry-granita-201035-1.jpg"
              },
     steps: ["For the panna cotta, put the gelatine leaves in a small bowl of cold water to soften – this will take about 5 mins. Meanwhile, pour the cream, milk and 2/3 of the sugar into a pan, split the vanilla pod, scrape out the seeds and add, along with the pod, to the cream mixture. Heat gently until hot, but not bubbling. Remove the gelatine leaves from the water, squeeze out any excess liquid then add, one at a time, to the hot cream. Stir until dissolved. Leave to stand for 20-30 mins until cooled – the vanilla pods should be suspended in the liquid by this point. Strain the mixture through a sieve into 6 serving glasses, then chill for at least 3 hrs.",
             "Toss the strawberries with the cornflour and what's left of the sugar in a saucepan. Place over a medium heat and cook for 4-5 mins, until the released juices thicken and the strawberries soften. Set aside to cool. Once completely cooled, top the set panna cottas with the strawberry mixture. Chill until ready to serve."],
@@ -303,7 +303,7 @@ recipes = [
               difficulty: "medium",
               prep_time: 140,
               country_id: Country.find_by(name: "france").id,
-              url: "https://zenaskitchen.com/wp-content/uploads/2022/02/ratatouille-1.jpg" },
+              url: "https://foodhub.scene7.com/is/image/woolworthsltdprod/fi-2306-ratatouille:Mobile-1300x1150" },
     steps: ["Heat the grill to high. Lay the pepper quarters skin-side up on a baking tray and grill until the skins are black and charred. Tip into a bowl, cover and leave to cool. Peel the charred skin off the peppers, then cut into strips, and toss back in the juices collected in the bowl. Tie the basil stalks and thyme sprig together using kitchen string and set aside.",
             "Heat the oven to 160C/140C fan/ gas 4. Heat the olive oil in a flameproof casserole dish and fry the courgettes and aubergine for 15 mins until nicely browned. You may need to do this in batches, adding more oil to the pan as needed so the pan is never dry.",
             "Scoop the veg out of the pan and set aside. Add a drizzle more oil, tip in the onion and cook for another 15 mins until softened and starting to brown. Add the garlic and leave to sizzle for a moment. Scatter with sugar, then leave for a minute to caramelise and splash in the vinegar. Stir in the cooked vegetables along with the pepper juice, season generously, pour over the cans of tomatoes and bring everything to a simmer.",
@@ -401,7 +401,7 @@ recipes.each do |recipe|
                           difficulty: recipe[:recipe][:difficulty],
                           prep_time: recipe[:recipe][:prep_time],
                           country_id: recipe[:recipe][:country_id])
-  new_recipe.photo.attach(io: file, filename: "#{recipe[:recipe][:name].delete(' ').downcase}.jpg", content_type: "image/jpg")
+  new_recipe.photo.attach(io: file, filename: "#{recipe[:recipe][:name].delete(' ').downcase}.jpg", content_type: "image/jpg" )
 
   recipe[:keywords].each do |keyword|
     new_recipe.keyword_list.add(keyword)

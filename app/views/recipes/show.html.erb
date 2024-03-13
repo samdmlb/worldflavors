@@ -1,8 +1,8 @@
 <div class="col-11 mx-auto" data-controller="servings" data-servings-default-servings="<%= @recipe.servings %>">
 
 
-  <div>
-    <%= image_tag("burger", class: "recipe-show-img rounded-10 shadow") %>
+  <div class="col-lg d-flex justify-content-center">
+    <%= cl_image_tag @recipe.photo.key, height: 300, width: 300, class: "recipe-show-img rounded-10 shadow", crop: :fill %>
   </div>
 
 
