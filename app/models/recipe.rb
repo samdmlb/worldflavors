@@ -18,4 +18,17 @@ class Recipe < ApplicationRecord
                   using: {
                     tsearch: { prefix: true }
                   }
+
+  def min_to_h(prep_time)
+    return "#{prep_time / 60}h#{prep_time % 60 if prep_time % 60 != 0}#{'min' if prep_time % 60 != 0}" if prep_time > 60
+
+    return "#{prep_time} min"
+  end
+
+  def country_flag(country)
+    country_hash = {  france: "fi-fr",
+                      italy: "fi-it" }
+
+    return country_hash[country.to_sym]
+  end
 end
