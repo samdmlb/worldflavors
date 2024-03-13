@@ -95,8 +95,8 @@ recipes = [
               xp: 200,
               difficulty: "easy",
               prep_time: 35,
-              country_id: Country.find_by(name: "italy").id
-              # url: "https://images.ctfassets.net/nw5k25xfqsik/64VwvKFqxMWQORE10Tn8pY/200c0538099dc4d1cf62fd07ce59c2af/20220211142754-margherita-9920.jpg"
+              country_id: Country.find_by(name: "italy").id,
+              url: "https://images.ctfassets.net/nw5k25xfqsik/64VwvKFqxMWQORE10Tn8pY/200c0538099dc4d1cf62fd07ce59c2af/20220211142754-margherita-9920.jpg"
              },
     steps: ["Make the base: Put the flour into a large bowl, then stir in the yeast and salt. Make a well, pour in 200ml warm water and the olive oil and bring together with a wooden spoon until you have a soft, fairly wet dough. Turn onto a lightly floured surface and knead for 5 mins until smooth. Cover with a tea towel and set aside. You can leave the dough to rise if you like, but it’s not essential for a thin crust.",
             "Make the sauce: Mix the passata, basil and crushed garlic together, then season to taste. Leave to stand at room temperature while you get on with shaping the base.",
@@ -140,8 +140,8 @@ recipes = [
               xp: 200,
               difficulty: "easy",
               prep_time: 30,
-              country_id: Country.find_by(name: "italy").id
-              # url: "https://assets.afcdn.com/recipe/20211214/125831_w1024h1024c1cx866cy866cxt0cyt292cxb1732cyb1732.jpg"
+              country_id: Country.find_by(name: "italy").id,
+              url: "https://assets.afcdn.com/recipe/20211214/125831_w1024h1024c1cx866cy866cxt0cyt292cxb1732cyb1732.jpg"
             },
     steps: ["Put a large saucepan of water on to boil.",
             "Finely chop the 100g pancetta, having first removed any rind. Finely grate 50g pecorino cheese and 50g parmesan and mix them together.",
@@ -190,8 +190,8 @@ recipes = [
               xp: 400,
               difficulty: "hard",
               prep_time: 55,
-              country_id: Country.find_by(name: "italy").id
-              # url: "https://sugargeekshow.com/wp-content/uploads/2022/01/panna_cotta_recipe-41-of-43-1-1200x1200.jpg"
+              country_id: Country.find_by(name: "italy").id,
+              url: "https://sugargeekshow.com/wp-content/uploads/2022/01/panna_cotta_recipe-41-of-43-1-1200x1200.jpg"
              },
     steps: ["For the panna cotta, put the gelatine leaves in a small bowl of cold water to soften – this will take about 5 mins. Meanwhile, pour the cream, milk and 2/3 of the sugar into a pan, split the vanilla pod, scrape out the seeds and add, along with the pod, to the cream mixture. Heat gently until hot, but not bubbling. Remove the gelatine leaves from the water, squeeze out any excess liquid then add, one at a time, to the hot cream. Stir until dissolved. Leave to stand for 20-30 mins until cooled – the vanilla pods should be suspended in the liquid by this point. Strain the mixture through a sieve into 6 serving glasses, then chill for at least 3 hrs.",
             "Toss the strawberries with the cornflour and what's left of the sugar in a saucepan. Place over a medium heat and cook for 4-5 mins, until the released juices thicken and the strawberries soften. Set aside to cool. Once completely cooled, top the set panna cottas with the strawberry mixture. Chill until ready to serve."],
@@ -224,8 +224,8 @@ recipes = [
               xp: 400,
               difficulty: "hard",
               prep_time: 105,
-              country_id: Country.find_by(name: "france").id
-              # url: "https://couteaux-et-tirebouchons.com/wp-content/uploads/2017/10/coq-au-vin-recette-gastronomique.jpg"
+              country_id: Country.find_by(name: "france").id,
+              url: "https://couteaux-et-tirebouchons.com/wp-content/uploads/2017/10/coq-au-vin-recette-gastronomique.jpg"
              },
     steps: ["Heat 1 tbsp olive oil in a large, heavy-based saucepan or flameproof dish. Tip in 3 trimmed and chopped smoked back bacon rashers and fry until crisp. Remove and drain on kitchen paper.",
             "Add 12 peeled shallots to the pan and fry, stirring or shaking the pan often, for 5-8 mins until well browned all over. Remove and set aside with the bacon.",
@@ -346,8 +346,8 @@ recipes = [
               xp: 200,
               difficulty: "easy",
               prep_time: 70,
-              country_id: Country.find_by(name: "france").id
-              # url: "https://www.onceuponachef.com/images/2019/02/french-onion-soup-1-760x970.jpg"
+              country_id: Country.find_by(name: "france").id,
+              url: "https://www.onceuponachef.com/images/2019/02/french-onion-soup-1-760x970.jpg"
             },
     steps: ["Melt the butter with the olive oil in a large heavy-based pan. Add the onions and fry with the lid on for 10 mins until soft.",
             "Sprinkle in the sugar and cook for 20 mins more, stirring frequently, until caramelised. The onions should be really golden, full of flavour and soft when pinched between your fingers. Take care towards the end to ensure that they don’t burn.",
@@ -393,14 +393,16 @@ recipes = [
 
 p "Creating recipes..."
 recipes.each do |recipe|
-  # file = URI.parse(recipe[:url]).open
+  file = URI.parse(recipe[:recipe][:url]).open
+
   new_recipe = Recipe.new(name: recipe[:recipe][:name],
                           servings: recipe[:recipe][:servings],
                           xp: recipe[:recipe][:xp],
                           difficulty: recipe[:recipe][:difficulty],
                           prep_time: recipe[:recipe][:prep_time],
                           country_id: recipe[:recipe][:country_id])
-                          # new_recipe.photo.attach(io: file, filename: "#{recipe[:recipe][:name].delete(' ').downcase}.jpg", content_type: "image/jpg")
+  new_recipe.photo.attach(io: file, filename: "#{recipe[:recipe][:name].delete(' ').downcase}.jpg", content_type: "image/jpg")
+
   recipe[:keywords].each do |keyword|
     new_recipe.keyword_list.add(keyword)
   end
