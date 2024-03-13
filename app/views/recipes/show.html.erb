@@ -1,11 +1,15 @@
 <div class="col-11 mx-auto" data-controller="servings" data-servings-default-servings="<%= @recipe.servings %>">
-  <h1>Show de la recette - EN CONSTRUCTION</h1>
 
   <div>
-    <h3><%= @recipe.name %></h3>
-    <h4><%= @recipe.country.name %></h4>
+    <%= image_tag("burger", class: "recipe-show-img") %>
+  </div>
+
+  <div>
+    <h1><%= @recipe.name %></h1>
+    <h4><%= @recipe.country.name.capitalize %></h4>
     <h4><%= @recipe.xp %>XP</h4>
     <h4><%= @recipe.difficulty %></h4>
+    <h4><%= @recipe.min_to_h(@recipe.prep_time) %></h4>
 
     <%# Choisir le nombre de personnes grace au controller stimulus servings %>
     <div class="d-flex">
@@ -42,12 +46,12 @@
     <% end %>
   </div>
 
-  <div>
+  <div class="d-flex justify-content-around mt-4">
     <% if UserRecipe.where(recipe_id: @recipe.id, user_id: current_user.id).exists? %>
-      <h4>You already cooked this recipe.</h4>
+      <div class="bouton-invalid">You already cooked this recipe.</div>
     <% else %>
       <%= simple_form_for [@recipe, @user_recipe] do |f| %>
-        <%= f.button :submit, 'Validate recipe', class: 'btn btn-primary' %>
+        <%= f.button :submit, 'Validate recipe', class: 'bouton-validate' %>
       <% end %>
     <% end %>
   </div>
