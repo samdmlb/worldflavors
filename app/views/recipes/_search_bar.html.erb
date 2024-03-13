@@ -113,13 +113,13 @@
 
             <%= link_to recipe_path(recipe), class: "recipe-card-link" do %>
 
-            <div>
+            <div class="mb-4">
               <%# image %>
               <div>
-                <%= image_tag("burger", class: "recipe-show-img rounded-10-top shadow-sm") %>
+                <%= cl_image_tag recipe.photo.key, class: "recipe-show-img shadow rounded-10-top" %>
               </div>
               <%# informations %>
-              <div class="rounded-10-bottom shadow-sm bg-white p-3">
+              <div class="rounded-10-bottom shadow bg-white p-3">
                 <%# nom de la recette %>
                 <h3><%= recipe.name %></h1>
 
