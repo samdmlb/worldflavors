@@ -47,13 +47,13 @@
   }
 }
 
-.modal-dialog {
+.custom-modal .modal-dialog  {
   position: fixed;
   top: 30%;
-  left: 28%;
+  left: 42%;
 }
 
-.modal-content {
+.custom-modal .modal-content {
   background-color: transparent;
   border: none;
   box-shadow: none;

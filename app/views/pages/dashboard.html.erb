@@ -1,7 +1,7 @@
 <div class="profile-banner">
   <%= image_tag("add-badge-placeholder.png")%>
   <div>
-    <h1>Waren</h1>
+    <h1><%= @user.email %></h1>
     <p>200xp</p>
   </div>
 </div>
@@ -58,7 +58,7 @@
 </div>
 
 
-<div class="modal fade" id="lastdish" tabindex="-1" aria-labelledby="lastdishLabel" aria-hidden="true">
+<div class="modal fade custom-modal" id="lastdish" tabindex="-1" aria-labelledby="lastdishLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-body">
