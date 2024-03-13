@@ -1,0 +1,28 @@
+.cookbook-btn {
+  padding: 8px 24px;
+  background-color: white;
+  color: $my-green;
+  font-size: 18px;
+  border: 1px solid $my-green;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.cookbook-btn-active {
+  padding: 8px 24px;
+  background-color: $my-green;
+  color: white;
+  font-size: 20px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.cookbook-btn-active:hover {
+  background-color: #7A9D2A;
+  color: white;
+}
+
+.cookbook-btn:hover {
+  border-color: #7A9D2A;
+  color: #7A9D2A;
+}

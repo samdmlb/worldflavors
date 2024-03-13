@@ -86,7 +86,7 @@
       <div class="modal-content rounded">
 
         <%# Header du modal avec le nombre de résultats %>
-        <div class="modal-header">
+        <div class="modal-header bg-white">
           <% if @searched_recipes.empty? %>
             <h2 class="modal-title">No results</h2>
           <% else %>
@@ -95,53 +95,82 @@
         </div>
 
         <%# Body du modal avec iteration de l'array searched_recipes qui regroupe les recettes recherchées %>
-        <div class="modal-body d-block pb-0">
-          <% @searched_recipes.each do |recipe| %>
-            <%= link_to recipe_path(recipe), class: "recipe-card-link" do %>
-            <div class="container recipe-card d-flex">
+        <div class="modal-body modal-body-height d-block pb-0">
+
+          <%# Si pas de résultat affiche un logo et no result found %>
+          <% if @searched_recipes.empty? %>
+            <div class="d-flex justify-content-around" style="margin-top:20vh">
               <div>
-              <%# taille correspondant au figma width:111 & height 111 %>
-              <%# faites pas attention a l image c'est pour tester %>
-              <%= image_tag("burger", size: "111") %>
+                <div class="d-flex justify-content-around">
+                  <%= render inline: Rails.root.join('app/assets/images/no_result.svg').read %>
+                </div>
+                <h1>No results found...</h1>
               </div>
-              <div class="row">
-                <div class="col-12">
-                <h3><%= recipe.name.capitalize %></h3>
+            </div>
+          <% end %>
+
+          <% @searched_recipes.each do |recipe| %>
+
+            <%= link_to recipe_path(recipe), class: "recipe-card-link" do %>
+
+            <div>
+              <%# image %>
+              <div>
+                <%= image_tag("burger", class: "recipe-show-img rounded-10-top shadow-sm") %>
+              </div>
+              <%# informations %>
+              <div class="rounded-10-bottom shadow-sm bg-white p-3">
+                <%# nom de la recette %>
+                <h3><%= recipe.name %></h1>
+
+                <%# pays et XP %>
+                <div class="d-flex justify-content-between">
+                  <%# drapeau et nom du pays %>
+                  <h5><span class="fi <%= recipe.country_flag(recipe.country.name) %>"></span> <%= recipe.country.name.capitalize %></h5>
+
+                  <%# xp et checkmark si recette deja réalisée %>
+                  <% if UserRecipe.where(recipe_id: recipe.id, user_id: current_user.id).exists? %>
+                    <div class="d-flex">
+                      <h5 style="color: rgba(0,0,0,0.4)"><s><%= recipe.xp %>XP</s></h5>
+                      <div class="check-circle">✓</div>
+                    </div>
+                  <% else %>
+                    <h5><%= recipe.xp %>XP</h5>
+                  <% end %>
                 </div>
-                <div class="col-2 text-center">
-                  <i class="fa-regular fa-clock"></i>
-                </div>
-                <div class="col-10 px-0">
-                  <p><%= recipe.country.name.capitalize %></p>
-                </div>
-                <div class="col-2 text-center">
-                  <i class="fa-regular fa-clock"></i>
-                </div>
-                <div class="col-10 px-0">
-                  <p><%= recipe.prep_time %> min</p>
-                </div>
-                <div class="col-2 text-center">
+
+                <%# difficulté %>
+                <div class="d-flex">
                   <% difficulty = recipe.difficulty %>
-                    <% if difficulty == "hard" %>
-                      <%= image_tag("hard.png", size: "16") %>
-                    <% elsif difficulty == "medium" %>
-                      <%= image_tag("mid.png", size: "16") %>
-                    <% else %>
-                      <%= image_tag("ezz.png", size: "16") %>
-                    <% end %>
+                  <% if difficulty == "hard" %>
+                    <%= image_tag("hard.png", size: "24") %>
+                  <% elsif difficulty == "medium" %>
+                    <%= image_tag("mid.png", size: "24") %>
+                  <% else %>
+                    <%= image_tag("ezz.png", size: "24") %>
+                  <% end %>
+                  <h5 class="ms-2"><%= recipe.difficulty.capitalize %></h5>
                 </div>
-                <div class="col-10 px-0">
-                <p><%= recipe.difficulty %></p>
-                </div>
+
+                <%# preptime %>
+                <h5><i class="fa-regular fa-clock"></i> <%= recipe.min_to_h(recipe.prep_time) %></h5>
+
+                <%# keywords %>
+                <% recipe.keyword_list.each do |keyword| %>
+                  <h5 class="keyword <%= "kw-" + keyword %>"><%= keyword.capitalize %></h5>
+                <% end %>
               </div>
             </div>
             <% end %>
           <% end %>
         </div>
 
+        <%# petite barre blanche en bas %>
+        <div class="modal-footer"></div>
+
         <%# Bouton pour fermer le modal %>
-        <div class="modal-footer justify-content-center">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <div class="d-inline-block mx-auto">
+          <button type="button" class="bouton-close mt-4" data-bs-dismiss="modal">Close</button>
         </div>
 
       </div>
