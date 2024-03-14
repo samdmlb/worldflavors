@@ -21,8 +21,8 @@ class UserRecipe < ApplicationRecord
     user_recipes_count = UserRecipe.where(user_id:).joins(recipe: :country).where(countries: { id: country_id }).count
 
     # Correspondance entre la condition et le badge
-    country_hash = { france: "Badge France",
-                     italy: "Badge Italy" }
+    country_hash = { france: "French cook",
+                     italy: "Ttalian cook" }
 
     badge_name = country_hash[Country.find(country_id).name.to_sym]
 
@@ -37,9 +37,9 @@ class UserRecipe < ApplicationRecord
     user_recipes_count = UserRecipe.where(user_id:).joins(:recipe).where(recipes: { difficulty: }).count
 
     # Correspondance entre la condition et le badge
-    difficulty_hash = { easy: "Badge Easy",
-                        medium: "Badge Medium",
-                        hard: "Badge Hard" }
+    difficulty_hash = { easy: "Easy",
+                        medium: "Medium",
+                        hard: "Hard" }
 
     badge_name = difficulty_hash[difficulty.to_sym]
 
@@ -59,7 +59,7 @@ class UserRecipe < ApplicationRecord
                         beef: "Badge Beef",
                         chicken: "Badge Chicken",
                         vegan: "Badge Vegan",
-                        vegetarian: "Badge Vegetarian",
+                        vegetarian: "Vegetarian cook",
                         dessert: "Badge Dessert",
                         duck: "Badge Duck" }
 

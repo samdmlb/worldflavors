@@ -1,0 +1,108 @@
+.position-relative {
+  position: relative;
+}
+
+
+
+.space-around-h1 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#congrats {
+  position: fixed;
+  top: 0;
+  left: 0;
+  // width: 100%;
+  // height: 100%;
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+}
+
+#police-congrats {
+  font-family: 'kalam';
+  text-align: center;
+  font-size: 3em;
+  // font-style: italic;
+  backdrop-filter: blur(5px); /* Flouter l'arrière-plan */
+  -webkit-backdrop-filter: blur(5px); /* Pour les navigateurs basés sur WebKit (comme Chrome) */
+}
+
+#police-no-badge {
+  font-family: 'kalam';
+  text-align: center;
+  font-size: 1.5em;
+}
+
+.div-no-badge {
+  margin-bottom: 50px;
+  justify-content: center;
+  // background-color: blue;
+}
+
+.div2-no-badge {
+  margin: 0 50px;
+  justify-content: center;
+}
+
+.avatar {
+  width: 60px;
+  border-radius: 50%;
+  // background-color: green;
+}
+
+.zone-gamer {
+  //  position: fixed;
+  // bottom: 55px;
+  // left: 25%;
+  // width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3px;
+  margin-top: 10px;
+  // background-color: red;
+}
+
+#p-score {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+#bas-de-carte {
+  // position: fixed;
+  // bottom: 100px;
+  display: flex;
+  flex-direction: column;
+  // align-items: center;
+  align-content: space-between;
+  margin-top: 10px;
+  // margin-bottom: 95px;
+  // background-color: red;
+}
+
+#zone-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#barre-level {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+// #relative-level {
+//   position: absolute;
+//   bottom: 10%;
+//   left: 50%;
+// }

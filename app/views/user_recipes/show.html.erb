@@ -1,8 +1,84 @@
-<h1>Show User Recipe</h1>
+<%# app/views/user_recipes/show.html.erb %>
 
-<h3>Nom de la recette : <%= @user_recipe.recipe.name %></h3>
-<h3>Email de l'user : <%= @user_recipe.user.email %></h3>
+<div class="col-11 mx-auto">
 
-<% @user_badges.each do |user_badge| %>
-  <p>Badge: <%= user_badge.badge.name %></p>
-<% end %>
+  <%# Affichage du fond "Congrats" en cas de badge obtenu %>
+  <div>
+    <% if @user_badges.exists? %>
+      <div>
+        <%# Si temps Mieux régler le responsive de l'image %>
+        <div id="congrats">
+          <img src="/assets/Congrats31.png" class="w-100" alt="Congrats">
+        </div>
+    <% end %>
+  </div>
+
+  <div class="rounded-10 shadow-sm bg-white p-3 my-3">
+    <div class="justify-content-center">
+    <%# ATTENTION - revenir dessus insérer l'image du cloudinary %>
+
+
+      <div>
+        <%= cl_image_tag @user_recipe.recipe.photo.key, class: "recipe-show-img shadow rounded-10-top" %>
+      </div>
+
+
+    </div>
+    <h1 class="space-around-h1 row justify-content-center"><%= @user_recipe.recipe.name %></h1>
+  </div>
+
+  <%# Affichage de la mention en fonction de l'acquisition de badge ou non %>
+  <div>
+    <% if @user_badges.exists? %>
+      <h1 id="police-congrats">Congrats !</h1>
+    <% else %>
+      <h2 id="police-no-badge" class="div-no-badge">No badges this time!</h2>
+    <% end %>
+  </div>
+
+  <%# Deuxième moitié de carte - prendre tout l'espace de la carte %>
+  <div id="bas-de-carte">
+    <div class="rounded-10 shadow-sm bg-white p-3 my-0">
+      <%# ne doit apparaître que si badge gagné %>
+      <% if @user_badges.exists? %>
+        <h1 class="space-around-h1 row justify-content-center">You won <%= @user_badges.count %> badge<%="s" if @user_badges.count>1%></h1>
+
+        <%# PB AFFICHAGE 1 OU PLUSIEURS BADGE = alterner entre justifyjustify-content-center et justify-content-between%>
+        <div class="d-flex justify-content-around">
+          <%# itération sur les badge gagnés pour les affichés %>
+          <% @user_badges.each do |user_badge| %>
+            <div id="zone-badge">
+              <div>
+                <%= image_tag(user_badge.badge.icon, style: "height: 90px; width: auto;") %>
+              </div>
+              <div><%= user_badge.badge.name %></div>
+            </div>
+          <% end %>
+        </div>
+      <% else %>
+        <h2 id="police-no-badge" class="div2-no-badge">Keep exploring our recipes to unlock badges!</h2>
+      <% end %>
+
+    </div>
+
+    <div class="zone-gamer">
+      <%# <%# <img class="avatar" alt="avatar" src="/assets/Avatar.png"> %>
+      <img class="avatar" alt="avatar" src="/assets/Avatar.png">
+      <div class="my-0.5">
+        <h3><%= @user_recipe.user.username %></h3>
+      </div>
+
+    </div>
+    <div class="d-flex flex-column">
+      <p id="p-score">240 / 400</p>
+      <div id="barre-level">
+        <p id="p-score" class="px-3 m-0"><%="+50 XP" if @user_badges.count>=1%></p>
+        <img alt="score barre" src="/assets/Barre de niveau - score12.png">
+        <p class="px-3 m-0">LVL 1</p>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+</div>
