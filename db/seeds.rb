@@ -35,7 +35,7 @@ p "Creatings badges..."
 badges = [
   { name: "French cook",
     icon: "Badge-fr" },
-  { name: "Ttalian cook",
+  { name: "Italian cook",
     icon: "Badge-it" },
   { name: "Easy",
     icon: "Badge-easy" },

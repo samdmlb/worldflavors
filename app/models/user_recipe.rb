@@ -22,7 +22,7 @@ class UserRecipe < ApplicationRecord
 
     # Correspondance entre la condition et le badge
     country_hash = { france: "French cook",
-                     italy: "Ttalian cook" }
+                     italy: "Italian cook" }
 
     badge_name = country_hash[Country.find(country_id).name.to_sym]
 

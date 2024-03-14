@@ -126,7 +126,7 @@
                 <%# pays et XP %>
                 <div class="d-flex justify-content-between">
                   <%# drapeau et nom du pays %>
-                  <h5><span class="fi <%= recipe.country_flag(recipe.country.name) %>"></span> <%= recipe.country.name.capitalize %></h5>
+                  <h5><span class="fi <%= recipe.country.flag %>"></span> <%= recipe.country.name.capitalize %></h5>
 
                   <%# xp et checkmark si recette deja réalisée %>
                   <% if UserRecipe.where(recipe_id: recipe.id, user_id: current_user.id).exists? %>
@@ -153,7 +153,7 @@
                 </div>
 
                 <%# preptime %>
-                <h5><i class="fa-regular fa-clock"></i> <%= recipe.min_to_h(recipe.prep_time) %></h5>
+                <h5><i class="fa-regular fa-clock"></i> <%= recipe.min_to_h %></h5>
 
                 <%# keywords %>
                 <% recipe.keyword_list.each do |keyword| %>

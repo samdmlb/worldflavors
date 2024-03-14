@@ -14,7 +14,7 @@
           <%# pays et XP %>
           <div class="d-flex justify-content-between">
             <%# drapeau et nom du pays %>
-            <h5><span class="fi <%= ur.recipe.country_flag(ur.recipe.country.name) %>"></span> <%= ur.recipe.country.name.capitalize %></h5>
+            <h5><span class="fi <%= ur.recipe.country.flag %>"></span> <%= ur.recipe.country.name.capitalize %></h5>
 
             <%# xp et checkmark si recette deja réalisée %>
             <div class="d-flex">
@@ -37,7 +37,7 @@
           </div>
 
           <%# preptime %>
-          <h5><i class="fa-regular fa-clock"></i> <%= ur.recipe.min_to_h(ur.recipe.prep_time) %></h5>
+          <h5><i class="fa-regular fa-clock"></i> <%= ur.recipe.min_to_h %></h5>
 
           <%# keywords %>
           <% ur.recipe.keyword_list.each do |keyword| %>
