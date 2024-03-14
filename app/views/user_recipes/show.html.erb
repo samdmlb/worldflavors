@@ -30,11 +30,11 @@
 
   <%# Affichage de la mention en fonction de l'acquisition de badge ou non %>
   <%# <div> %>
-    <%# <% if @user_badges.exists? %> %>
+    <%# <% if @user_badges.exists? %>
       <%# <h1 id="police-congrats">Congrats!</h1> %>
-    <%# <% else %> %>
+    <%# <% else %>
       <%# <h2 id="police-no-badge" class="div-no-badge">No badges this time!</h2> %>
-    <%# <% end %> %>
+    <%# <% end %>
   <%# </div> %>
 
   <%# Deuxième moitié de carte - prendre tout l'espace de la carte %>
@@ -42,7 +42,8 @@
     <div class="rounded-10 shadow-sm bg-white p-3 my-0">
       <%# ne doit apparaître que si badge gagné %>
       <% if @user_badges.exists? %>
-        <h1 class="row justify-content-center">You earned <%= @user_badges.count %> badge<%="s" if @user_badges.count>1%>!</h1>
+        <h1 class="text-center">Congrats!</h1>
+        <h1 class="text-center">You earned <%= @user_badges.count %> badge<%="s" if @user_badges.count>1%>!</h1>
 
         <%# PB AFFICHAGE 1 OU PLUSIEURS BADGE = alterner entre justifyjustify-content-center et justify-content-between%>
         <div class="d-flex justify-content-around">
@@ -57,7 +58,8 @@
           <% end %>
         </div>
       <% else %>
-        <h2 class="text-center">Keep exploring our recipes to unlock badges!</h2>
+        <h1 class="text-center mb-4">No badges this time...</h1>
+        <h1 class="text-center">Keep exploring our recipes to unlock badges!</h1>
       <% end %>
 
     </div>
@@ -65,7 +67,7 @@
     <div class="bg-white pb-3 mt-3 rounded-10">
       <div class="zone-gamer">
         <%# <%# <img class="avatar" alt="avatar" src="/assets/Avatar.png"> %>
-        <img class="avatar" alt="avatar" src="/assets/Avatar.png">
+        <%= image_tag("Avatar.png", class: "avatar") %>
         <div class="my-0.5">
           <h3><%= @user_recipe.user.username %></h3>
         </div>
@@ -75,7 +77,7 @@
         <p id="p-score">200 / 400XP</p>
         <div id="barre-level">
           <p id="p-score" class="px-3 m-0">+<%= @user_recipe.recipe.xp %>XP</p>
-          <img alt="score barre" src="/assets/Barre de niveau - score12.png">
+          <%= image_tag("Barre-de-niveau-score12.png") %>
           <p class="px-3 m-0">LVL 1</p>
         </div>
       </div>
