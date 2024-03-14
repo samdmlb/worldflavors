@@ -9,15 +9,13 @@
 
 .stats-card {
   cursor: pointer;
-  width: 250px;
-  height: 330px;
   border: 1px solid gray;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
   img {
     width: 100%;
-    height: 250px;
+    height: 150px;
     object-fit: cover;
   }
 
@@ -30,31 +28,31 @@
 }
 
 
-.modal-card {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 250px;
-  height: 330px;
-  border: 1px solid gray;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  background-color: white;
+// .modal-card {
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   width: 250px;
+//   height: 330px;
+//   border: 1px solid gray;
+//   border-radius: 10px;
+//   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+//   background-color: white;
 
-  h4 {
-    size: 12px;
-    text-align: center;
-  }
-}
+//   h4 {
+//     size: 12px;
+//     text-align: center;
+//   }
+// }
 
-.card-modal .modal-dialog  {
-  position: fixed;
-  top: 30%;
-  left: 42%;
-}
+// .card-modal .modal-dialog  {
+//   position: fixed;
+//   top: 30%;
+//   left: 42%;
+// }
 
-.card-modal .modal-content {
-  background-color: transparent;
-  border: none;
-  box-shadow: none;
-}
+// .card-modal .modal-content {
+//   background-color: transparent;
+//   border: none;
+//   box-shadow: none;
+// }

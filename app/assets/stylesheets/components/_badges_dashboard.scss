@@ -1,7 +1,7 @@
 .badges-container {
   padding-top: 8px;
   text-align: center;
-  background-color: gray;
+  background-color: rgba(98, 140, 4, 0.5);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   margin-bottom: 32px;
 }
@@ -17,8 +17,6 @@
 
 .round-btn {
   display: inline-block;
-  height: 120px;
-  width: 120px;
   border: none;
   border-radius: 50%;
   cursor: pointer;
@@ -28,6 +26,5 @@
     width: 100%;
     height: 100%;
     vertical-align: middle;
-    margin-right: 5px; /* Adjust spacing between image and text */
   }
 }

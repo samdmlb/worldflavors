@@ -6,10 +6,10 @@ class PagesController < ApplicationController
 
   def dashboard
     @user = current_user
-    if UserRecipe.last.nil?
+    if UserRecipe.where(user: current_user).last.nil?
       @m_last_dish = "You haven't completed a recipe yet"
     else
-      @m_last_dish = UserRecipe.last.recipe.name
+      @m_last_dish = UserRecipe.where(user: current_user).last.recipe.name
     end
   end
 
