@@ -34,11 +34,11 @@ p "Creatings badges..."
 
 badges = [
   { name: "French cook",
-    icon: "Badge-fr" },
+    icon: "Badge-fr.png" },
   { name: "Italian cook",
-    icon: "Badge-it" },
+    icon: "Badge-it.png" },
   { name: "Easy",
-    icon: "Badge-easy" },
+    icon: "Badge-easy.png" },
   { name: "Medium",
     icon: "" },
   { name: "Hard",
@@ -52,7 +52,7 @@ badges = [
   { name: "Badge Duck",
     icon: "" },
   { name: "Vegetarian cook",
-    icon: "Badge-veget" },
+    icon: "Badge-veget.png" },
   { name: "Badge Vegan",
     icon: "" },
   { name: "Badge Dessert",
