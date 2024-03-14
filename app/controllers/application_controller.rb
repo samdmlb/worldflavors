@@ -7,4 +7,12 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:username])
   end
+
+  def authenticate_user!
+    if user_signed_in?
+      super
+    else
+      redirect_to root_path, alert: 'Please sign-in before proceeding'
+    end
+  end
 end

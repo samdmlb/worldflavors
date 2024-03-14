@@ -8,7 +8,7 @@
 
 
   <% if user_signed_in? %>
-    <h3 class="mx-auto text-center mt-5">Welcome back <%= current_user.email %> !</h3>
+    <h3 class="mx-auto text-center mt-5">Welcome back <%= current_user.username %> !</h3>
     <div class="mx-auto mt-4">
       <%= link_to recipes_path do%>
         <button class="btn bouton-login">Enter</button>
@@ -16,7 +16,7 @@
     </div>
   <% else %>
     <div class="col-10 mx-auto mt-5">
-      <%= simple_form_for(resource, as: resource_name, url: root_path(resource_name)) do |f| %>
+      <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="form-inputs">
           <%= f.input :email,
                       required: false,
