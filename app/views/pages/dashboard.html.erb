@@ -3,7 +3,7 @@
   <div class="profile-banner bg-white rounded-10 my-3">
     <%= image_tag("Avatar.png")%>
     <div>
-      <h1><%= @user.username %></h1>
+      <h1><%= current_user.username %></h1>
       <p>200XP</p>
     </div>
   </div>
@@ -13,22 +13,17 @@
   <div class="badges-container rounded-10">
     <h1>Showcase your badges</h1>
     <div class="badges">
-      <%= link_to root_path do %>
-        <%= button_tag(type: "button", class: "round-btn") do %>
-          <%= image_tag("add-badge-placeholder.png", class: "col-3") %>
-        <% end %>
+
+      <%= button_tag(type: "button", class: "round-btn", "data-bs-toggle": "modal", "data-bs-target": "#badge-modal") do %>
+        <%= image_tag("add-badge-placeholder.png", class: "col-3") %>
       <% end %>
 
-      <%= link_to root_path do %>
-        <%= button_tag(type: "button", class: "round-btn") do %>
-          <%= image_tag("add-badge-placeholder.png", class: "col-3") %>
-        <% end %>
+      <%= button_tag(type: "button", class: "round-btn", "data-bs-toggle": "modal", "data-bs-target": "#badge-modal") do %>
+        <%= image_tag("add-badge-placeholder.png", class: "col-3") %>
       <% end %>
 
-      <%= link_to root_path do %>
-        <%= button_tag(type: "button", class: "round-btn") do %>
-          <%= image_tag("add-badge-placeholder.png", class: "col-3") %>
-        <% end %>
+      <%= button_tag(type: "button", class: "round-btn", "data-bs-toggle": "modal", "data-bs-target": "#badge-modal") do %>
+        <%= image_tag("add-badge-placeholder.png", class: "col-3") %>
       <% end %>
 
     </div>
@@ -71,6 +66,37 @@
     <div class="modal-content">
       <div class="modal-body mx-auto col-8 rounded-10">
         <h4><%= @m_last_dish %></h4>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="badge-modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body mx-auto rounded-10">
+
+        <div class="d-flex flex-wrap justify-content-around">
+          <% @badges_won.each do |badge| %>
+            <% if badge.icon %>
+              <%= image_tag(badge.icon, class: "mb-2", style: "height: 120px; width: auto;") %>
+            <% else %>
+              <h1 style="height: 120px; width: 120px;"><%= badge.name %></h1>
+            <% end %>
+          <% end %>
+        </div>
+
+        <hr>
+
+        <div class="d-flex flex-wrap justify-content-around">
+          <% @badges_locked.each do |badge| %>
+            <% if badge.icon %>
+              <%= image_tag(badge.icon, class: "mb-2", style: "height: 120px; width: auto;") %>
+            <% else %>
+              <h1 style="height: 120px; width: 120px;"><%= badge.name %></h1>
+            <% end %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>

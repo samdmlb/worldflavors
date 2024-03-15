@@ -5,7 +5,9 @@ class PagesController < ApplicationController
   end
 
   def dashboard
-    @user = current_user
+    @badges_won = Badge.where(id: current_user.badges.pluck(:id))
+    @badges_locked = Badge.where.not(id: current_user.badges.pluck(:id))
+
     if UserRecipe.where(user: current_user).last.nil?
       @m_last_dish = "You haven't completed a recipe yet"
     else
