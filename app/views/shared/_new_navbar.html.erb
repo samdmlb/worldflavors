@@ -15,11 +15,11 @@
       </div>
     <% end %>
 
-     <%= link_to dashboard_path, class: "text-decoration-none text-warning #{'active-nav-page' if current_page?(dashboard_path)}" do %>
-    <div class="text-center text-warning" style="width: 5em">
-      <i class="fa-solid fa-user" style="font-size: 1.5rem"></i>
-      <p class="m-0" style="font-size: 0.625rem">Dashboard</p>
-    </div>
+    <%= link_to dashboard_path, class: "text-decoration-none text-warning #{'active-nav-page' if current_page?(dashboard_path)}" do %>
+      <div class="text-center" style="width: 5em">
+        <i class="fa-solid fa-user" style="font-size: 1.5rem"></i>
+        <p class="m-0" style="font-size: 0.625rem">Dashboard</p>
+      </div>
     <% end %>
 
   </div>
