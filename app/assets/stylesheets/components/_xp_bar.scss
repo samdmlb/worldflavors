@@ -1,0 +1,24 @@
+.xp-bar {
+  height: 20px;
+  width: 100px;
+  border: 1px solid black;
+  display: flex;
+  background-color: white;
+}
+
+.xp-before {
+  height: auto;
+  width: 0;
+  background-color: $my-yellow;
+}
+
+.xp-won {
+  height: auto;
+  width: 0;
+  background-color: $my-green;
+  transition: width 2s ease;
+}
+
+.xp-recipe {
+  color: $my-green;
+}

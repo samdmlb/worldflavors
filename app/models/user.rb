@@ -11,4 +11,12 @@ class User < ApplicationRecord
   has_one_attached :photo
 
   validates :username, presence: true, uniqueness: true
+
+  def lvl
+    return (xp / 500) + 1
+  end
+
+  def xp_modulo
+    return xp % 500
+  end
 end
