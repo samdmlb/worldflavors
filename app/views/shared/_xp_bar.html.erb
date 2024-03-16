@@ -1,0 +1,23 @@
+  <% if (current_user.xp_modulo) < @user_recipe.recipe.xp %>
+    <% xp_won_bar = ((current_user.xp_modulo) * 0.2).to_i %>
+  <% else %>
+    <% xp_won_bar = ((@user_recipe.recipe.xp) * 0.2).to_i %>
+    <% xp_before_bar = (((current_user.xp_modulo) - @user_recipe.recipe.xp) * 0.2).to_i %>
+  <% end %>
+
+<div data-controller="xp-bar" data-xp-value="<%= xp_won_bar %>%">
+  <div class="text-center">
+    <h2><%= current_user.xp_modulo %>/500XP</h2>
+  </div>
+
+  <div class="d-flex justify-content-center">
+    <h2 class="xp-recipe">+<%= @user_recipe.recipe.xp %>XP</h2>
+
+    <div class="xp-bar ms-2 me-2">
+      <div class="xp-before" style="width:<%= xp_before_bar %>%"></div>
+      <div class="xp-won" data-xp-bar-target="xpWon"></div>
+    </div>
+
+    <h2>LVL <%= current_user.lvl %></h2>
+  </div>
+</div>

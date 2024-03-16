@@ -70,17 +70,11 @@
         <div class="my-0.5">
           <h3><%= @user_recipe.user.username %></h3>
         </div>
-
-      </div>
-      <div class="d-flex flex-column">
-        <p id="p-score">200 / 400XP</p>
-        <div id="barre-level">
-          <p id="p-score" class="px-3 m-0">+<%= @user_recipe.recipe.xp %>XP</p>
-          <%= image_tag("Barre-de-niveau-score12.png") %>
-          <p class="px-3 m-0">LVL 1</p>
-        </div>
+        <%= render "shared/xp_bar"%>
       </div>
     </div>
+
+
   </div>
 
 </div>

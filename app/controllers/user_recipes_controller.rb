@@ -5,6 +5,8 @@ class UserRecipesController < ApplicationController
     @user_recipe.user = current_user
     @user_recipe.recipe = @recipe
     if @user_recipe.save
+      current_user.xp += @recipe.xp
+      current_user.save
       redirect_to user_recipe_path(@user_recipe)
     else
       render "", status: :unprocessable_entity
