@@ -56,6 +56,16 @@ badges = [
   { name: "Badge Vegan",
     icon: "" },
   { name: "Badge Dessert",
+    icon: "" },
+  { name: "Level 5",
+    icon: "" },
+  { name: "Level 10",
+    icon: "" },
+  { name: "Level 15",
+    icon: "" },
+  { name: "Level 20",
+    icon: "" },
+  { name: "Level 25",
     icon: "" }
 ]
 
