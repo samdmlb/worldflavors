@@ -12,6 +12,11 @@ class UserRecipe < ApplicationRecord
     badge_country3
     badge_difficulty3
     badge_keyword3
+    badge_lvl5
+    badge_lvl10
+    badge_lvl15
+    badge_lvl20
+    badge_lvl25
   end
 
   def badge_country3
@@ -68,5 +73,25 @@ class UserRecipe < ApplicationRecord
       # Créer un user_badge avec le badge correspondant si la condition est remplise
       UserBadge.create(user_id:, badge: Badge.find_by(name: badge_name)) if user_recipes_count == 3
     end
+  end
+
+  def badge_lvl5
+    UserBadge.create(user_id:, badge: Badge.find_by(name: "Level 5")) if user.xp > 2000 && (user.xp - recipe.xp) < 2000
+  end
+
+  def badge_lvl10
+    UserBadge.create(user_id:, badge: Badge.find_by(name: "Level 10")) if user.xp > 4500 && (user.xp - recipe.xp) < 4500
+  end
+
+  def badge_lvl15
+    UserBadge.create(user_id:, badge: Badge.find_by(name: "Level 15")) if user.xp > 7000 && (user.xp - recipe.xp) < 7000
+  end
+
+  def badge_lvl20
+    UserBadge.create(user_id:, badge: Badge.find_by(name: "Level 20")) if user.xp > 9500 && (user.xp - recipe.xp) < 9500
+  end
+
+  def badge_lvl25
+    UserBadge.create(user_id:, badge: Badge.find_by(name: "Level 25")) if user.xp > 12000 && (user.xp - recipe.xp) < 12000
   end
 end
