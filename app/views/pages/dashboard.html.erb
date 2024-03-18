@@ -1,4 +1,4 @@
-<div class="col-11 mx-auto">
+<div data-controller="badge-modal" class="col-11 mx-auto">
 
   <div class="profile-banner bg-white rounded-10 my-3">
     <%= image_tag("Avatar.png")%>
@@ -14,16 +14,28 @@
     <h1>Showcase your badges</h1>
     <div class="badges">
 
-      <%= button_tag(type: "button", class: "round-btn", "data-bs-toggle": "modal", "data-bs-target": "#badge-modal") do %>
-        <%= image_tag("add-badge-placeholder.png", class: "col-3") %>
+      <%= button_tag(type: "button", class: "round-btn", "data-action": "click->badge-modal#openModal", "data-button-number": "1") do %>
+        <% if UserBadge.find_by(slot: 1) %>
+          <%= image_tag(UserBadge.find_by(slot: 1).badge.icon) %>
+        <% else %>
+          <%= image_tag("add-badge-placeholder.png") %>
+        <% end %>
       <% end %>
 
-      <%= button_tag(type: "button", class: "round-btn", "data-bs-toggle": "modal", "data-bs-target": "#badge-modal") do %>
-        <%= image_tag("add-badge-placeholder.png", class: "col-3") %>
+      <%= button_tag(type: "button", class: "round-btn", "data-action": "click->badge-modal#openModal", "data-button-number": "2") do %>
+        <% if UserBadge.find_by(slot: 2) %>
+          <%= image_tag(UserBadge.find_by(slot: 2).badge.icon) %>
+        <% else %>
+          <%= image_tag("add-badge-placeholder.png") %>
+        <% end %>
       <% end %>
 
-      <%= button_tag(type: "button", class: "round-btn", "data-bs-toggle": "modal", "data-bs-target": "#badge-modal") do %>
-        <%= image_tag("add-badge-placeholder.png", class: "col-3") %>
+      <%= button_tag(type: "button", class: "round-btn", "data-action": "click->badge-modal#openModal", "data-button-number": "3") do %>
+        <% if UserBadge.find_by(slot: 3) %>
+          <%= image_tag(UserBadge.find_by(slot: 3).badge.icon) %>
+        <% else %>
+          <%= image_tag("add-badge-placeholder.png") %>
+        <% end %>
       <% end %>
 
     </div>
@@ -71,27 +83,33 @@
   </div>
 </div>
 
+
+<%# badge modal %>
 <div class="modal fade" id="badge-modal" tabindex="-1" role="dialog">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-body mx-auto rounded-10">
 
+        <%# badges débloqués %>
         <div class="d-flex flex-wrap justify-content-around">
           <% @badges_won.each do |badge| %>
-            <% if badge.icon %>
-              <%= image_tag(badge.icon, class: "mb-2", style: "height: 120px; width: auto;") %>
-            <% else %>
-              <h1 style="height: 120px; width: 120px;"><%= badge.name %></h1>
-            <% end %>
+            <div data-badge-id="<%= badge.id %>" data-action="click->badge-modal#selectBadge" class="mb-2" style="height: auto; width: 30%;">
+              <% if badge.icon %>
+                  <%= image_tag(badge.icon, style: "width: 100%") %>
+              <% else %>
+                <h1><%= badge.name %></h1>
+              <% end %>
+            </div>
           <% end %>
         </div>
 
         <hr>
 
+        <%# badges non-débloqués %>
         <div class="d-flex flex-wrap justify-content-around">
           <% @badges_locked.each do |badge| %>
             <% if badge.icon %>
-              <%= image_tag(badge.icon, class: "mb-2", style: "height: 120px; width: auto;") %>
+              <%= image_tag(badge.icon, class: "mb-2", style: "height: 120px; width: auto; filter: grayscale(1)") %>
             <% else %>
               <h1 style="height: 120px; width: 120px;"><%= badge.name %></h1>
             <% end %>

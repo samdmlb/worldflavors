@@ -37,9 +37,13 @@ export default class extends Controller {
         this.displayLvlTarget.textContent = "LVL " + userLvl;
 
         this.displayLvlTarget.classList.toggle("grow");
-        setTimeout(() => {
-          this.displayLvlTarget.classList.toggle("grow");
-        }, 500);
+        if (this.displayLvlTarget.classList.contains("grow")) {
+          setTimeout(() => {
+            this.displayLvlTarget.classList.toggle("normal");
+          }, 500);
+        } else {
+          this.displayLvlTarget.classList.toggle("normal");
+        };
 
 
         this.xpNumberAnimation(0, userXpModulo);
