@@ -14,9 +14,30 @@ class PagesController < ApplicationController
     else
       @m_last_dish = UserRecipe.where(user: current_user).last.recipe.name
     end
-    @m_average_time = recipes_user.average(:prep_time).round
-    @m_most_ingredient = recipes_user.joins(:ingredients).group('ingredients.name').count.sort_by { |_key, value| value }.last&.first
-    @m_favorite_country = Country.joins(recipes: :user_recipes).where(user_recipes: { user: current_user }).group('countries.name').count.sort_by { |_key, value| value }.last&.first
+
+    if UserRecipe.where(user: current_user).last.nil?
+      @m_average_time = "You haven't completed a recipe yet"
+    else
+      @m_average_time = recipes_user.average(:prep_time).round
+    end
+
+    if UserRecipe.where(user: current_user).last.nil?
+      @m_most_ingredient = "You haven't completed a recipe yet"
+    else
+      @m_most_ingredient = recipes_user.joins(:ingredients).
+                           group('ingredients.name').count.
+                           sort_by { |_key, value| value }.last&.first
+    end
+
+    if UserRecipe.where(user: current_user).last.nil?
+      @m_favorite_country = "You haven't completed a recipe yet"
+    else
+      @m_favorite_country = Country.joins(recipes: :user_recipes).
+                            where(user_recipes: { user: current_user }).
+                            group('countries.name').count.sort_by { |_key, value| value }.
+                            last&.first
+    end
+
   end
 
   def cookbook
