@@ -57,7 +57,11 @@
           <% @user_badges.each do |user_badge| %>
             <div id="zone-badge">
               <div>
-                <%= image_tag(user_badge.badge.icon, style: "height: 90px; width: auto;") %>
+                <% if user_badge.badge.icon %>
+                  <%= image_tag(user_badge.badge.icon, style: "height: 90px; width: auto;") %>
+                <% else %>
+                  <h5><%= user_badge.badge.name %></h5>
+                <% end %>
               </div>
               <div><%= user_badge.badge.name %></div>
             </div>
