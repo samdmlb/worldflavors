@@ -52,14 +52,20 @@
 }
 
 .recipe-name {
-  font-size: 28px;
+  font-size: 32px;
 }
 
 .recipe-container-grid {
-  padding: 10px;
+  padding: 10px 10px 4px 10px;
 }
 
 .recipe-container {
-  padding: 16px 16px 0px 16px;
+  padding: 16px 16px 8px 16px;
   margin-bottom: 20px;
+}
+
+.delicious-handrawn-regular {
+  font-family: "Delicious Handrawn", cursive;
+  font-weight: 400;
+  font-style: normal;
 }
