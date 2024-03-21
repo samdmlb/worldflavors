@@ -1,58 +1,70 @@
-.stats-card-container {
+.cards-stat-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-  justify-content: center;
+  gap: 10px;
+  justify-content: space-around;
   align-items: center;
   justify-items: center;
 }
 
-.stats-card {
-  cursor: pointer;
-  border: 1px solid gray;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.card-container {
+  width: 140px;
+  height: 185px;
+  margin-bottom: 20px;
+  perspective: 750px;
 
-  img {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
-  }
-
-  h3 {
-    size: 14px;
-    text-align: center;
-    margin-bottom: 0px;
-    padding: 4px;
+  &:hover > .stat-card {
+    cursor: pointer;
+    transform: rotateY(180deg);
   }
 }
 
+.stat-card {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition: transform 1500ms;
+  transform-style: preserve-3d;
+}
 
-// .modal-card {
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   width: 250px;
-//   height: 330px;
-//   border: 1px solid gray;
-//   border-radius: 10px;
-//   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-//   background-color: white;
+.front,
+.back {
+  width: 100%;
+  height: 100%;
+  border-radius: 10%;
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.2);
+  position: absolute;
+  backface-visibility: hidden;
+}
 
-//   h4 {
-//     size: 12px;
-//     text-align: center;
-//   }
-// }
+.front {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
 
-// .card-modal .modal-dialog  {
-//   position: fixed;
-//   top: 30%;
-//   left: 42%;
-// }
+  img {
+    width: 100%;
+    height: 100px;
+  }
 
-// .card-modal .modal-content {
-//   background-color: transparent;
-//   border: none;
-//   box-shadow: none;
-// }
+  h3 {
+    font-size: 20px;
+    text-align: center;
+  }
+}
+
+.back {
+  background-color: #3a3a3a;
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+
+  h1 {
+    font-size: 24px;
+    margin: 4px;
+  }
+}

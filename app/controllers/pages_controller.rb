@@ -35,7 +35,7 @@ class PagesController < ApplicationController
       @m_favorite_country = Country.joins(recipes: :user_recipes).
                             where(user_recipes: { user: current_user }).
                             group('countries.name').count.sort_by { |_key, value| value }.
-                            last&.first
+                            last&.first.capitalize
     end
 
   end
