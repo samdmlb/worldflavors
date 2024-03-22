@@ -13,7 +13,7 @@
     <% end %>
   </div>
 
-  <div class="rounded-10 shadow-sm bg-white p-3 my-3">
+  <div class="rounded-10 shadow-sm bg-white px-3 pt-3 my-3">
     <div class="justify-content-center">
     <%# ATTENTION - revenir dessus insérer l'image du cloudinary %>
 
@@ -27,8 +27,8 @@
     </div>
     <div class="d-flex justify-content-center">
       <div data-number-animation-target="recipeNameDiv">
-        <div id="recipe-name" data-number-animation-target="recipeNameContent" class="mb-0 mt-2">
-          <h1><i><span data-number-animation-target="recipeNameText"><%= @user_recipe.recipe.name %></span></i></h1>
+        <div id="recipe-name" data-number-animation-target="recipeNameContent">
+          <p class="recipe-name delicious-handrawn-regular mb-1"><i><span data-number-animation-target="recipeNameText"><%= @user_recipe.recipe.name %></span></i></p>
         </div>
       </div>
     </div>
@@ -57,7 +57,11 @@
           <% @user_badges.each do |user_badge| %>
             <div id="zone-badge">
               <div>
-                <%= image_tag(user_badge.badge.icon, style: "height: 90px; width: auto;") %>
+                <% if user_badge.badge.icon %>
+                  <%= image_tag(user_badge.badge.icon, style: "height: 90px; width: auto;") %>
+                <% else %>
+                  <h5><%= user_badge.badge.name %></h5>
+                <% end %>
               </div>
               <div><%= user_badge.badge.name %></div>
             </div>

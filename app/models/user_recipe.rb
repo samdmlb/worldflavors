@@ -12,11 +12,8 @@ class UserRecipe < ApplicationRecord
     badge_country3
     badge_difficulty3
     badge_keyword3
-    badge_lvl5
-    badge_lvl10
-    badge_lvl15
-    badge_lvl20
-    badge_lvl25
+    badges_lvl
+    badges_preptime
   end
 
   def badge_country3
@@ -75,23 +72,34 @@ class UserRecipe < ApplicationRecord
     end
   end
 
-  def badge_lvl5
-    UserBadge.create(user_id:, badge: Badge.find_by(name: "Level 5")) if user.xp > 2000 && (user.xp - recipe.xp) < 2000
+  def badges_lvl
+    badge_requirements = {
+      "Level 5" => 2000,
+      "Level 10" => 4500,
+      "Level 15" => 7000,
+      "Level 20" => 9500,
+      "Level 25" => 12000
+    }
+
+    badge_requirements.each do |badge_name, xp_requirement|
+      UserBadge.create(user_id:, badge: Badge.find_by(name: badge_name)) if user.xp > xp_requirement && (user.xp - recipe.xp) < xp_requirement
+    end
   end
 
-  def badge_lvl10
-    UserBadge.create(user_id:, badge: Badge.find_by(name: "Level 10")) if user.xp > 4500 && (user.xp - recipe.xp) < 4500
-  end
+  def badges_preptime
+    badge_requirements = {
+      "Badge 1h" => 60,
+      "Badge 5h" => 300,
+      "Badge 10h" => 600,
+      "Badge 15h" => 900,
+      "Badge 20h" => 1200,
+      "Badge 25h" => 1500
+    }
 
-  def badge_lvl15
-    UserBadge.create(user_id:, badge: Badge.find_by(name: "Level 15")) if user.xp > 7000 && (user.xp - recipe.xp) < 7000
-  end
+    total_preptime = UserRecipe.where(user_id:).sum { |ur| ur.recipe.prep_time }
 
-  def badge_lvl20
-    UserBadge.create(user_id:, badge: Badge.find_by(name: "Level 20")) if user.xp > 9500 && (user.xp - recipe.xp) < 9500
-  end
-
-  def badge_lvl25
-    UserBadge.create(user_id:, badge: Badge.find_by(name: "Level 25")) if user.xp > 12000 && (user.xp - recipe.xp) < 12000
+    badge_requirements.each do |badge_name, required_time|
+      UserBadge.create(user_id:, badge: Badge.find_by(name: badge_name)) if total_preptime >= required_time && (total_preptime - ur.recipe.prep_time) < required_time
+    end
   end
 end

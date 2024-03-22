@@ -1,8 +1,8 @@
 class Recipe < ApplicationRecord
   belongs_to :country
-  has_many :user_recipes
-  has_many :steps
-  has_many :recipe_ingredients
+  has_many :user_recipes, dependent: :destroy
+  has_many :steps, dependent: :destroy
+  has_many :recipe_ingredients, dependent: :destroy
   has_many :ingredients, through: :recipe_ingredients
   has_one_attached :photo
 

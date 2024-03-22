@@ -26,3 +26,46 @@
   border-color: #7A9D2A;
   color: #7A9D2A;
 }
+
+
+.display-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.recipe-img-grid {
+  object-fit: cover;
+  height: 180px;
+  width: 100%;
+}
+
+.recipe-img {
+  object-fit: cover;
+  height: 350px;
+  width: 100%;
+}
+
+.recipe-name-grid {
+  font-size: 20px;
+  margin-top: 5px;
+}
+
+.recipe-name {
+  font-size: 32px;
+}
+
+.recipe-container-grid {
+  padding: 10px 10px 4px 10px;
+}
+
+.recipe-container {
+  padding: 16px 16px 8px 16px;
+  margin-bottom: 20px;
+}
+
+.delicious-handrawn-regular {
+  font-family: "Delicious Handrawn", cursive;
+  font-weight: 400;
+  font-style: normal;
+}

@@ -4,8 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :user_recipes
-  has_many :user_badges
+  has_many :user_recipes, dependent: :destroy
+  has_many :user_badges, dependent: :destroy
   has_many :badges, through: :user_badges
 
   has_one_attached :photo
