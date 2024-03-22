@@ -66,6 +66,18 @@ badges = [
   { name: "Level 20",
     icon: "" },
   { name: "Level 25",
+    icon: "" },
+  { name: "Badge 1h",
+    icon: "" },
+  { name: "Badge 5h",
+    icon: "" },
+  { name: "Badge 10h",
+    icon: "" },
+  { name: "Badge 15h",
+    icon: "" },
+  { name: "Badge 20h",
+    icon: "" },
+  { name: "Badge 25h",
     icon: "" }
 ]
 
