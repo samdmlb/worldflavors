@@ -8,8 +8,8 @@
 }
 
 .card-container {
-  width: 140px;
-  height: 185px;
+  width: 30vw;
+  height: 20vh;
   margin-bottom: 20px;
   perspective: 750px;
 
@@ -66,5 +66,6 @@
   h1 {
     font-size: 24px;
     margin: 4px;
+    color: white;
   }
 }

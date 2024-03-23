@@ -18,7 +18,7 @@ class PagesController < ApplicationController
     if UserRecipe.where(user: current_user).last.nil?
       @m_average_time = "You haven't completed a recipe yet"
     else
-      @m_average_time = recipes_user.average(:prep_time).round
+      @m_average_time ="#{recipes_user.average(:prep_time).round} min"
     end
 
     if UserRecipe.where(user: current_user).last.nil?
@@ -37,7 +37,6 @@ class PagesController < ApplicationController
                             group('countries.name').count.sort_by { |_key, value| value }.
                             last&.first.capitalize
     end
-
   end
 
   def cookbook
