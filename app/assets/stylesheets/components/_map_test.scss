@@ -2,12 +2,16 @@
   position: fixed;
   width: 100%;
   top: 0;
-  z-index: 10000;
+  z-index: 10001;
 }
 
 #map-container {
+  margin-top: -86px;
+  position: absolute;
+  width: 100%;
   height: 100%;
   overflow: auto;
+  touch-action: none;
 }
 
 #map-content {

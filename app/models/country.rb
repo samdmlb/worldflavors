@@ -16,7 +16,9 @@ class Country < ApplicationRecord
                       norway: "fi-no",
                       sweden: "fi-se",
                       netherlands: "fi-nl",
-                      denmark: "fi-dk" }
+                      denmark: "fi-dk",
+                      iceland: "fi-is",
+                      bulgaria: "fi-bg" }
 
     return country_hash[name.remove(" ").to_sym]
   end
