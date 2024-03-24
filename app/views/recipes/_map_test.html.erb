@@ -1,0 +1,22 @@
+<div id="map-content">
+  <%# Liste des pays : quand on clique sur un, une fenetre (modal) s'ouvre avec ses recettes %>
+  <% @countries.each do |country| %>
+    <div id="button-<%= country.name.downcase.remove(" ") %>" class="button-country text-center country-stars">
+      <div class="d-flex">
+        <% ur_count = UserRecipe.where(user_id: current_user.id).joins(recipe: :country).where(countries: { id: country.id }).count %>
+        <% ur_count.times do %>
+          <h2><i class="fa-solid fa-star"></i></h2>
+        <% end %>
+        <% (3 - ur_count).times do %>
+          <h2><i class="fa-regular fa-star"></i></h2>
+        <% end %>
+      </div>
+
+      <button class="fi <%= country.flag %> btn button-flag" type="button" data-bs-toggle="modal" data-bs-target="#modal-<%= country.name.downcase.remove(" ") %>">
+      </button>
+    </div>
+
+    <%= render 'modal', country: country, recipes_count: Recipe.where(country_id: country.id).count %>
+
+  <% end %>
+</div>
