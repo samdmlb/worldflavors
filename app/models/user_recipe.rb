@@ -99,7 +99,7 @@ class UserRecipe < ApplicationRecord
     total_preptime = UserRecipe.where(user_id:).sum { |ur| ur.recipe.prep_time }
 
     badge_requirements.each do |badge_name, required_time|
-      UserBadge.create(user_id:, badge: Badge.find_by(name: badge_name)) if total_preptime >= required_time && (total_preptime - ur.recipe.prep_time) < required_time
+      UserBadge.create(user_id:, badge: Badge.find_by(name: badge_name)) if total_preptime >= required_time && (total_preptime - recipe.prep_time) < required_time
     end
   end
 end

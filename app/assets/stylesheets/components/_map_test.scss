@@ -1,0 +1,109 @@
+#map-search-bar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 10000;
+}
+
+#map-container {
+  height: 100%;
+  overflow: auto;
+}
+
+#map-content {
+  position: relative;
+  width: 2000px;
+  height: 2000px;
+  background: url('Europe_map.png') no-repeat center center;
+  background-size: cover;
+}
+
+.country-stars {
+  color: goldenrod;
+}
+
+.button-flag {
+  padding: 15px 25px;
+}
+
+.button-country {
+  position: absolute;
+  transform: translateX(-50%);
+  z-index: 1000;
+  cursor: pointer;
+}
+
+#button-france {
+  top: 1316px;
+  left: 639px;
+}
+
+#button-italy {
+  top: 1542px;
+  left: 1016px;
+}
+
+#button-belgium {
+  top: 1172px;
+  left: 721px;
+}
+
+#button-germany {
+  top: 1110px;
+  left: 926px;
+}
+
+#button-greece {
+  top: 1753px;
+  left: 1419px;
+}
+
+#button-ireland {
+  top: 977px;
+  left: 342px;
+}
+
+#button-portugal {
+  top: 1713px;
+  left: 135px;
+}
+
+#button-spain {
+  top: 1715px;
+  left: 342px;
+}
+
+#button-unitedkingdom {
+  top: 1035px;
+  left: 526px;
+}
+
+#button-switzerland {
+  top: 1386px;
+  left: 835px;
+}
+
+#button-poland {
+  top: 1072px;
+  left: 1214px;
+}
+
+#button-norway {
+  top: 622px;
+  left: 893px;
+}
+
+#button-sweden {
+  top: 673px;
+  left: 1053px;
+}
+
+#button-netherlands {
+  top: 1092px;
+  left: 768px;
+}
+
+#button-denmark {
+  top: 885px;
+  left: 885px;
+}

@@ -1,8 +1,7 @@
-import { Controller } from "@hotwired/stimulus"
+import { Controller } from "@hotwired/stimulus";
 
-// Connects to data-controller="search-modal"
 export default class extends Controller {
-  static targets = ["modal", "filter"]
+  static targets = ["modal", "filter", "preptime", "difficulty", "query", "modalBody", "modalHeader"];
 
   connect() {
     if (window.location.search) { this.openModal(); }
@@ -16,6 +15,38 @@ export default class extends Controller {
   toggle() {
     this.filterTarget.classList.toggle("d-none");
   }
+
+  // async submitForm(event) {
+  //   event.preventDefault();
+  //   await this.fetchSearchResults();
+  //   this.openModal();
+  // }
+
+  // async fetchSearchResults() {
+  //   const preptimeValue = this.element.querySelector('input[name="preptime"]:checked').value;
+  //   const difficultyValue = this.element.querySelector('input[name="difficulty"]:checked').value;
+  //   const queryValue = this.queryTarget.value;
+
+  //   try {
+  //     const response = await fetch(`/recipes?preptime=${preptimeValue}&difficulty=${difficultyValue}&query=${queryValue}`, {
+  //       method: "GET",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //         "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+  //         "Accept": "application/json"
+  //       }
+  //     });
+
+  //     if (!response.ok) {
+  //       throw new Error('Network response was not ok');
+  //     }
+
+  //     const data = await response.json();
+  //     console.log(data);
+  //   } catch (error) {
+  //     console.error('Error:', error);
+  //   }
+  // }
 }
 
 
