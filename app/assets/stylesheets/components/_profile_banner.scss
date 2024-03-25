@@ -3,16 +3,23 @@
   align-items: start;
   justify-content: space-evenly;
   padding: 20px;
+  position: relative;
 
   img {
     height: auto;
     width: 20vw;
-    border: solid 2px black;
+    border: solid 2px rgb(160, 160, 160);
     border-radius: 50%;
   }
 
   p {
     text-align: center;
-
   }
+}
+
+.edit {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  padding: 10px;
 }

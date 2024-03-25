@@ -1,3 +1,8 @@
+.title {
+  color: #628C04 ;
+}
+
+
 .cards-stat-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -10,7 +15,6 @@
 .card-container {
   width: 30vw;
   height: 20vh;
-  margin-bottom: 20px;
   perspective: 750px;
 
   &:hover > .stat-card {
@@ -50,13 +54,13 @@
   }
 
   h3 {
-    font-size: 20px;
+    font-size: 0.9rem;
     text-align: center;
   }
 }
 
 .back {
-  background-color: #3a3a3a;
+  background-color: #628C04 ;
   transform: rotateY(180deg);
   display: flex;
   flex-direction: column;
@@ -64,7 +68,7 @@
   text-align: center;
 
   h1 {
-    font-size: 24px;
+    font-size: 0.9rem;
     margin: 4px;
     color: white;
   }
