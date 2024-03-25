@@ -1,17 +1,18 @@
-<div data-controller="badge-modal" class="col-11 mx-auto">
+<div data-controller="badge-modal" class="col-11 mx-auto mt-3">
 
-  <div class="profile-banner bg-white rounded-10 my-3">
+  <div class="profile-banner bg-white rounded-10 my-3 shadow">
+   <i class="fa-solid fa-list edit"></i>
     <%= image_tag("Avatar.png")%>
     <div>
       <h1><%= current_user.username %></h1>
-      <p>200XP</p>
+      <p>200xp</p> <%# à remplacer par la barre d'experience %>
     </div>
   </div>
 
 
 
-  <div class="badges-container rounded-10">
-    <h1>Showcase your badges</h1>
+  <div class="badges-container rounded-10 shadow" >
+    <h1 class="title">Showcase your badges</h1>
     <div class="badges">
 
       <%= button_tag(type: "button", class: "round-btn", "data-action": "click->badge-modal#openModal", "data-button-number": "1") do %>
@@ -42,68 +43,69 @@
   </div>
 
 <%# stats-card-container %>
-<div class="container">
-<div class="cards-stat-container">
-  <div class="card-container">
-    <div class="stat-card">
-      <div class="front">
-        <h3>The last dish</h3>
-        <%= image_tag("card-lastdish.jpg") %>
-        <h3>you have done</h3>
-      </div>
+<div class="bg-white rounded-10 shadow py-3">
+  <h1 class="text-center title">Your Statistics</h1>
+  <div class="cards-stat-container">
+    <div class="card-container">
+      <div class="stat-card">
+        <div class="front">
+          <h3>The last dish</h3>
+          <%= image_tag("card-lastdish.jpg") %>
+          <h3>you have done</h3>
+        </div>
 
-      <div class="back">
-        <h1><%= @m_last_dish %></h1>
-      </div>
+        <div class="back">
+          <h1><%= @m_last_dish %></h1>
+        </div>
 
+      </div>
+    </div>
+
+    <div class="card-container">
+      <div class="stat-card">
+        <div class="front">
+          <h3>Your average</h3>
+          <%= image_tag("card-avr-cookingtime.jpg") %>
+          <h3>cooking time</h3>
+        </div>
+
+        <div class="back">
+          <h1><%= @m_average_time %></h1>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="card-container">
+      <div class="stat-card">
+        <div class="front">
+          <h3>Your favorite</h3>
+          <%= image_tag("card-fav-destination.jpg") %>
+          <h3>destination</h3>
+        </div>
+
+        <div class="back">
+          <h1><%= @m_favorite_country %></h1>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="card-container">
+      <div class="stat-card">
+        <div class="front">
+          <h3>Your favorite</h3>
+          <%= image_tag("card-fav-ingredient.jpg") %>
+          <h3>ingredient</h3>
+        </div>
+
+        <div class="back">
+          <h1><%= @m_most_ingredient %></h1>
+        </div>
+
+      </div>
     </div>
   </div>
-
-  <div class="card-container">
-    <div class="stat-card">
-      <div class="front">
-         <h3>Your average</h3>
-        <%= image_tag("card-avr-cookingtime.jpg") %>
-        <h3>cooking time</h3>
-      </div>
-
-      <div class="back">
-        <h1><%= @m_average_time %></h1>
-      </div>
-
-    </div>
-  </div>
-
-  <div class="card-container">
-    <div class="stat-card">
-      <div class="front">
-        <h3>Your favorite</h3>
-        <%= image_tag("card-fav-destination.jpg") %>
-        <h3>destination</h3>
-      </div>
-
-      <div class="back">
-        <h1><%= @m_favorite_country %></h1>
-      </div>
-
-    </div>
-  </div>
-
-  <div class="card-container">
-    <div class="stat-card">
-      <div class="front">
-         <h3>Your favorite</h3>
-        <%= image_tag("card-fav-ingredient.jpg") %>
-        <h3>ingredient</h3>
-      </div>
-
-      <div class="back">
-        <h1><%= @m_most_ingredient %></h1>
-      </div>
-
-    </div>
-  </div>
-</div>
 </div>
 
 
@@ -142,4 +144,5 @@
       </div>
     </div>
   </div>
+</div>
 </div>
