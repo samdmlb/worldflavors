@@ -4,25 +4,21 @@
   </div>
 
   <div class="d-flex justify-content-around">
-    <div class="cookbook-btn-active" data-cookbook-target="made" data-action="click->cookbook#madeSelect">
-      <h4 class="m-0">Recipes made</h4>
+    <div class="cookbook-btn-active" data-cookbook-target="bookmark" data-action="click->cookbook#bookmarkSelect">
+      <h4 class="m-0">Bookmarks</h4>
     </div>
 
-    <div class="cookbook-btn" data-cookbook-target="bookmark" data-action="click->cookbook#bookmarkSelect">
-      <h4 class="m-0">Bookmarks</h4>
+    <div class="cookbook-btn" data-cookbook-target="made" data-action="click->cookbook#madeSelect">
+      <h4 class="m-0">Recipes made</h4>
     </div>
   </div>
 
-  <div data-cookbook-target="renderMade">
+  <div class="d-none" data-cookbook-target="renderMade">
     <%= render "cookbook_made" %>
   </div>
 
-  <div class="d-none" data-cookbook-target="renderBookmark">
+  <div data-cookbook-target="renderBookmark">
     <%= render "cookbook_bookmark" %>
   </div>
-
-
-
-
 
 </div>

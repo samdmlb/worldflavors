@@ -24,22 +24,23 @@ class PagesController < ApplicationController
     if UserRecipe.where(user: current_user).last.nil?
       @m_most_ingredient = "You haven't completed a recipe yet"
     else
-      @m_most_ingredient = recipes_user.joins(:ingredients).
-                           group('ingredients.name').count.
-                           sort_by { |_key, value| value }.last&.first
+      @m_most_ingredient = recipes_user.joins(:ingredients)
+                                       .group('ingredients.name').count
+                                       .sort_by { |_key, value| value }.last&.first
     end
 
     if UserRecipe.where(user: current_user).last.nil?
       @m_favorite_country = "You haven't completed a recipe yet"
     else
-      @m_favorite_country = Country.joins(recipes: :user_recipes).
-                            where(user_recipes: { user: current_user }).
-                            group('countries.name').count.sort_by { |_key, value| value }.
-                            last&.first.capitalize
+      @m_favorite_country = Country.joins(recipes: :user_recipes)
+                                   .where(user_recipes: { user: current_user })
+                                   .group('countries.name').count.sort_by { |_key, value| value }
+                                   .last&.first
     end
   end
 
   def cookbook
     @user_recipes = UserRecipe.where(user_id: current_user.id).order(created_at: :desc) || []
+    @bookmarks = Bookmark.where(user_id: current_user.id)
   end
 end

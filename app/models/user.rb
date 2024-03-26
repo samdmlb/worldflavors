@@ -7,6 +7,8 @@ class User < ApplicationRecord
   has_many :user_recipes, dependent: :destroy
   has_many :user_badges, dependent: :destroy
   has_many :badges, through: :user_badges
+  has_many :bookmarks, dependent: :destroy
+  has_many :bookmark_recipes, through: :bookmarks, source: :recipe, dependent: :destroy
 
   has_one_attached :photo
 
