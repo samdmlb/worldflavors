@@ -15,7 +15,11 @@
 
         <div data-cookbook-grid-target="recipeContainer" class="recipe-container bg-white rounded-10">
           <div>
-            <%= cl_image_tag ur.recipe.photo.key, class: "recipe-img rounded-10", "data-cookbook-grid-target": "recipePhoto" %>
+            <% if ur.photo.attached? %>
+              <%= cl_image_tag ur.photo.key, class: "recipe-img rounded-10", "data-cookbook-grid-target": "recipePhoto" %>
+            <% else %>
+              <%= cl_image_tag ur.recipe.photo.key, class: "recipe-img rounded-10", "data-cookbook-grid-target": "recipePhoto" %>
+            <% end %>
           </div>
 
           <div data-cookbook-grid-target="recipeName" class="text-center mb-0 recipe-name delicious-handrawn-regular">
