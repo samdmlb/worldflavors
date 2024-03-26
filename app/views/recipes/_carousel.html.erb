@@ -2,8 +2,34 @@
   <div class="carousel-inner">
     <% recipes.each_with_index do |recipe, index| %>
       <div class="carousel-item <%= 'active' if index.zero? %>">
+
+        <%# bouton bookmark %>
+        <div class="recipe-card-relative"
+              id="bookmarks"
+              data-controller="bookmarks"
+              data-user-id="<%= current_user.id %>"
+              data-bookmarked-by="<%= recipe.bookmarked_by.pluck(:id).to_json %>">
+            <!-- Icône de favori -->
+            <% if bookmark_exists_for_recipe?(recipe) %>
+              <%# <h1>verif fav existe</h1> %>
+              <a class="bookmark-button bookmark-active"
+                  data-bookmarks-target="bookmarkButton"
+                  data-action="click->bookmarks#isBookmark"
+                  data-recipe-id="<%= recipe.id %>">
+              </a>
+            <% else %>
+              <%# <h1>verif fav n'existe pas</h1> %>
+              <a class="bookmark-button bookmark-inactive"
+                  data-bookmarks-target="bookmarkButton"
+                  data-action="click->bookmarks#isBookmark"
+                  data-recipe-id="<%= recipe.id %>">
+              </a>
+            <% end %>
+          </div>
+
         <%= link_to recipe_path(recipe), class: "recipe-card-link" do %>
           <div class="mb-3">
+
               <%# image %>
               <div>
                 <%= cl_image_tag recipe.photo.key, class: "recipe-show-img rounded-10-top shadow-sm" %>
