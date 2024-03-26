@@ -2,6 +2,8 @@ class UserRecipe < ApplicationRecord
   belongs_to :user
   belongs_to :recipe
 
+  has_one_attached :photo
+
   validates :user, uniqueness: { scope: :recipe }
 
   after_create :check_and_create_user_badge
@@ -81,8 +83,10 @@ class UserRecipe < ApplicationRecord
       "Level 25" => 12000
     }
 
+    user = User.find_by(id: user_id)
+
     badge_requirements.each do |badge_name, xp_requirement|
-      UserBadge.create(user_id:, badge: Badge.find_by(name: badge_name)) if user.xp > xp_requirement && (user.xp - recipe.xp) < xp_requirement
+      UserBadge.create(user_id:, badge: Badge.find_by(name: badge_name)) if user.xp < xp_requirement && (user.xp + recipe.xp) > xp_requirement
     end
   end
 

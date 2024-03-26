@@ -1,17 +1,17 @@
-<%# app/views/user_recipes/show.html.erb %>
+<% ub_string = @user_badges.map { |ub| ub.badge.name }.join(", ") %>
 
-<div data-controller="number-animation" class="col-11 mx-auto">
+<div data-controller="number-animation" class="col-11 mx-auto" data-badges="<%= ub_string %>">
 
   <%# Affichage du fond "Congrats" en cas de badge obtenu %>
-  <div>
+  <%# <div>
     <% if @user_badges.exists? %>
-      <div>
+      <%# <div> %>
         <%# Si temps Mieux régler le responsive de l'image %>
-        <div id="congrats">
-          <%= image_tag("Congrats31.png") %>
-        </div>
-    <% end %>
-  </div>
+        <%# <div id="congrats"> %>
+          <%# <%= image_tag("Congrats31.png") %>
+        <%# </div> %>
+    <%# <% end %>
+  <%# </div> %>
 
   <div class="rounded-10 shadow-sm bg-white px-3 pt-3 my-3">
     <div class="justify-content-center">
@@ -19,7 +19,11 @@
 
 
       <div class="image-container">
-        <%= cl_image_tag @user_recipe.recipe.photo.key, class: "recipe-show-img rounded-10" %>
+        <% if @user_recipe.photo.attached? %>
+          <%= cl_image_tag @user_recipe.photo.key, class: "recipe-show-img rounded-10" %>
+        <% else %>
+          <%= cl_image_tag @user_recipe.photo.key, class: "recipe-show-img rounded-10" %>
+        <% end %>
         <div class="overlay" data-number-animation-target="overlay"></div>
       </div>
 
@@ -48,7 +52,7 @@
     <div class="rounded-10 shadow-sm bg-white p-3 my-0">
       <%# ne doit apparaître que si badge gagné %>
       <% if @user_badges.exists? %>
-        <h1 class="text-center">Congrats!</h1>
+        <h1 class="text-center">Congrats! <span data-action="click->number-animation#confetti">🎉</span></h1>
         <h1 class="text-center">You earned <%= @user_badges.count %> badge<%="s" if @user_badges.count>1%>!</h1>
 
         <%# PB AFFICHAGE 1 OU PLUSIEURS BADGE = alterner entre justifyjustify-content-center et justify-content-between%>
