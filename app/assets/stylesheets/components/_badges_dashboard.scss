@@ -1,22 +1,22 @@
 .badges-container {
   padding-top: 8px;
   text-align: center;
-  background-color: rgba(98, 140, 4, 0.5);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: white;
   margin-bottom: 32px;
 }
 
 
 .badges {
   display: flex;
-  gap: 32px;
-  justify-content: center;
+  justify-content: space-between;
   padding: 20px;
   margin-bottom: 10px;
 }
 
 .round-btn {
   display: inline-block;
+  width: 30%;
+  height: auto;
   border: none;
   border-radius: 50%;
   cursor: pointer;

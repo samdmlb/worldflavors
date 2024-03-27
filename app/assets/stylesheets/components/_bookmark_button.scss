@@ -1,0 +1,19 @@
+.recipe-card-relative {
+  position: relative;
+}
+
+.bookmark-button {
+  padding: 16px 19px !important;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  // background-color: yellow;
+}
+
+.bookmark-active {
+  background-image: url('/assets/Like-on3_rt.png');
+}
+
+.bookmark-inactive {
+  background-image: url('/assets/Like-off2_rt.png');
+}

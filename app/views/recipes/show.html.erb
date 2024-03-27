@@ -94,11 +94,12 @@
 
 
   <%# bouton validation %>
-  <div class="d-flex justify-content-around mt-4">
+  <div class="text-center mt-4">
     <% if UserRecipe.where(recipe_id: @recipe.id, user_id: current_user.id).exists? %>
       <div class="bouton-invalid">You already cooked this recipe</div>
     <% else %>
       <%= simple_form_for [@recipe, @user_recipe] do |f| %>
+        <%= f.input :photo, as: :file, label: "Upload a picture to validate the recipe" %>
         <%= f.button :submit, 'Validate recipe', class: 'bouton-validate' %>
       <% end %>
     <% end %>

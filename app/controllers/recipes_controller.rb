@@ -3,6 +3,8 @@ class RecipesController < ApplicationController
     @countries = Country.all
     @searched_recipes = Recipe.all
 
+    @searched_recipes = Recipe.tagged_with(params[:query]) unless Recipe.tagged_with(params[:query]).empty?
+
     case params[:preptime]
     when "1" then @searched_recipes = @searched_recipes.where(prep_time: (0..29))
     when "2" then @searched_recipes = @searched_recipes.where(prep_time: (30..60))
@@ -15,7 +17,9 @@ class RecipesController < ApplicationController
     when "3" then @searched_recipes = @searched_recipes.where(difficulty: "hard")
     end
 
-    @searched_recipes = @searched_recipes.global_search(params[:query]) if params[:query].present?
+    if params[:query].present? && Recipe.tagged_with(params[:query]).empty?
+      @searched_recipes = @searched_recipes.global_search(params[:query])
+    end
   end
 
   def show

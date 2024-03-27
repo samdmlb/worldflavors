@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "flag-icons": "^7.2.0"
+    "flag-icons": "^7.2.0",
+    "js-confetti": "^0.12.0"
   }
 }

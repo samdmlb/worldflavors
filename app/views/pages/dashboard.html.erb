@@ -1,97 +1,148 @@
-<div class="col-11 mx-auto">
+<div data-controller="badge-modal" class="col-11 mx-auto mt-3">
 
-  <div class="profile-banner bg-white rounded-10 my-3">
+  <div data-controller="dropdown-dashboard" class="profile-banner bg-white rounded-10 my-3 shadow">
+    <i data-action="click->dropdown-dashboard#toggle" class="fa-solid fa-list edit"></i>
+    <!-- Dropdown menu -->
+    <div data-target="dropdown-dashboard.menu" class="dropdown-content d-none">
+      <a href="#">Edit profile</a>
+      <a href="#">Settings</a>
+      <%= link_to 'Logout', destroy_user_session_path, data: { "turbo-method": :delete } %>
+    </div>
+
     <%= image_tag("Avatar.png")%>
     <div>
       <h1><%= current_user.username %></h1>
-      <p>200XP</p>
+      <p>200xp</p> <%# à remplacer par la barre d'experience %>
     </div>
   </div>
 
 
 
-  <div class="badges-container rounded-10">
-    <h1>Showcase your badges</h1>
+  <div class="badges-container rounded-10 shadow" >
+    <h1 class="title">Showcase your badges</h1>
     <div class="badges">
 
-      <%= button_tag(type: "button", class: "round-btn", "data-bs-toggle": "modal", "data-bs-target": "#badge-modal") do %>
-        <%= image_tag("add-badge-placeholder.png", class: "col-3") %>
+      <%= button_tag(type: "button", class: "round-btn", "data-action": "click->badge-modal#openModal", "data-button-number": "1") do %>
+        <% if UserBadge.find_by(slot: 1) %>
+          <%= image_tag(UserBadge.find_by(slot: 1).badge.icon) %>
+        <% else %>
+          <%= image_tag("add-badge-placeholder.png") %>
+        <% end %>
       <% end %>
 
-      <%= button_tag(type: "button", class: "round-btn", "data-bs-toggle": "modal", "data-bs-target": "#badge-modal") do %>
-        <%= image_tag("add-badge-placeholder.png", class: "col-3") %>
+      <%= button_tag(type: "button", class: "round-btn", "data-action": "click->badge-modal#openModal", "data-button-number": "2") do %>
+        <% if UserBadge.find_by(slot: 2) %>
+          <%= image_tag(UserBadge.find_by(slot: 2).badge.icon) %>
+        <% else %>
+          <%= image_tag("add-badge-placeholder.png") %>
+        <% end %>
       <% end %>
 
-      <%= button_tag(type: "button", class: "round-btn", "data-bs-toggle": "modal", "data-bs-target": "#badge-modal") do %>
-        <%= image_tag("add-badge-placeholder.png", class: "col-3") %>
+      <%= button_tag(type: "button", class: "round-btn", "data-action": "click->badge-modal#openModal", "data-button-number": "3") do %>
+        <% if UserBadge.find_by(slot: 3) %>
+          <%= image_tag(UserBadge.find_by(slot: 3).badge.icon) %>
+        <% else %>
+          <%= image_tag("add-badge-placeholder.png") %>
+        <% end %>
       <% end %>
 
     </div>
   </div>
 
+<%# stats-card-container %>
+<div class="bg-white rounded-10 shadow py-3">
+  <h1 class="text-center title">Your Statistics</h1>
+  <div class="cards-stat-container">
+    <div class="card-container">
+      <div class="stat-card">
+        <div class="front">
+          <h3>The last dish</h3>
+          <%= image_tag("card-lastdish.jpg") %>
+          <h3>you have done</h3>
+        </div>
 
+        <div class="back">
+          <h1><%= @m_last_dish %></h1>
+        </div>
 
-  <%# <div class="stats-card-container"> %>
-  <div>
-    <div class="d-flex justify-content-around mb-4">
-      <div class="stats-card col-5" data-bs-toggle="modal" data-bs-target="#lastdish">
-        <h3>The last dish</h3>
-        <%= image_tag("card-lastdish.jpg") %>
-        <h3>you have done</h3>
       </div>
-      <div class="stats-card col-5" data-bs-toggle="modal" data-bs-target="#lastdish">
-        <h3>Your average</h3>
-        <%= image_tag("card-avr-cookingtime.jpg") %>
-        <h3>cooking time</h3>
+    </div>
+
+    <div class="card-container">
+      <div class="stat-card">
+        <div class="front">
+          <h3>Your average</h3>
+          <%= image_tag("card-avr-cookingtime.jpg") %>
+          <h3>cooking time</h3>
+        </div>
+
+        <div class="back">
+          <h1><%= @m_average_time %></h1>
+        </div>
+
       </div>
     </div>
 
-    <div class="d-flex justify-content-around">
-      <div class="stats-card col-5" data-bs-toggle="modal" data-bs-target="#lastdish">
-        <h3>Your favorite</h3>
-        <%= image_tag("card-fav-destination.jpg") %>
-        <h3>destination</h3>
-      </div>
-      <div class="stats-card col-5" data-bs-toggle="modal" data-bs-target="#lastdish">
-        <h3>Your favorite</h3>
-        <%= image_tag("card-fav-ingredient.jpg") %>
-        <h3>ingredient</h3>
+    <div class="card-container">
+      <div class="stat-card">
+        <div class="front">
+          <h3>Your favorite</h3>
+          <%= image_tag("card-fav-destination.jpg") %>
+          <h3>destination</h3>
+        </div>
+
+        <div class="back">
+          <h1><%= @m_favorite_country %></h1>
+        </div>
+
       </div>
     </div>
-  </div>
 
+    <div class="card-container">
+      <div class="stat-card">
+        <div class="front">
+          <h3>Your favorite</h3>
+          <%= image_tag("card-fav-ingredient.jpg") %>
+          <h3>ingredient</h3>
+        </div>
 
-<div class="modal fade" id="lastdish" tabindex="-1" role="dialog">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-body mx-auto col-8 rounded-10">
-        <h4><%= @m_last_dish %></h4>
+        <div class="back">
+          <h1><%= @m_most_ingredient %></h1>
+        </div>
+
       </div>
     </div>
   </div>
 </div>
 
+
+
+<%# badge modal %>
 <div class="modal fade" id="badge-modal" tabindex="-1" role="dialog">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-body mx-auto rounded-10">
 
+        <%# badges débloqués %>
         <div class="d-flex flex-wrap justify-content-around">
           <% @badges_won.each do |badge| %>
-            <% if badge.icon %>
-              <%= image_tag(badge.icon, class: "mb-2", style: "height: 120px; width: auto;") %>
-            <% else %>
-              <h1 style="height: 120px; width: 120px;"><%= badge.name %></h1>
-            <% end %>
+            <div data-badge-id="<%= badge.id %>" data-action="click->badge-modal#selectBadge" class="mb-2" style="height: auto; width: 30%;">
+              <% if badge.icon %>
+                  <%= image_tag(badge.icon, style: "width: 100%") %>
+              <% else %>
+                <h1><%= badge.name %></h1>
+              <% end %>
+            </div>
           <% end %>
         </div>
 
         <hr>
 
+        <%# badges non-débloqués %>
         <div class="d-flex flex-wrap justify-content-around">
           <% @badges_locked.each do |badge| %>
             <% if badge.icon %>
-              <%= image_tag(badge.icon, class: "mb-2", style: "height: 120px; width: auto;") %>
+              <%= image_tag(badge.icon, class: "mb-2", style: "height: 120px; width: auto; filter: grayscale(1)") %>
             <% else %>
               <h1 style="height: 120px; width: 120px;"><%= badge.name %></h1>
             <% end %>
@@ -100,4 +151,5 @@
       </div>
     </div>
   </div>
+</div>
 </div>

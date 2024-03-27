@@ -1,8 +1,7 @@
-import { Controller } from "@hotwired/stimulus"
+import { Controller } from "@hotwired/stimulus";
 
-// Connects to data-controller="search-modal"
 export default class extends Controller {
-  static targets = ["modal", "filter"]
+  static targets = ["modal", "filter", "preptime", "difficulty", "query", "modalBody", "modalHeader"];
 
   connect() {
     if (window.location.search) { this.openModal(); }
