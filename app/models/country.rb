@@ -3,7 +3,8 @@ class Country < ApplicationRecord
 
   def flag
     country_hash = {  france: "fi-fr",
-                      italy: "fi-it" }
+                      italy: "fi-it"
+                       }
 
     return country_hash[name.to_sym]
   end

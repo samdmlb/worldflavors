@@ -127,6 +127,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_15_224537) do
   create_table "user_badges", force: :cascade do |t|
     t.bigint "badge_id", null: false
     t.bigint "user_id", null: false
+    t.boolean "selected"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "slot", default: 0
