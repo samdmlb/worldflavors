@@ -2,6 +2,11 @@ $body-text-color: black;
 $recipes-title: black;
 // a changer en fonction de notre palette
 
+.golden-border {
+  border-radius: 10px;
+  box-shadow: 0px 0px 8px goldenrod;
+}
+
 .recipe-card {
 background-color: white;
 border-radius: 6px;
