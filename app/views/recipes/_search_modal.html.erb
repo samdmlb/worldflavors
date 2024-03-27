@@ -54,15 +54,17 @@
               <% end %>
             </div>
 
-            <%= link_to recipe_path(recipe), class: "recipe-card-link" do %>
 
-            <div class="mb-4">
+          <div class="mb-4 <%= UserRecipe.where(recipe_id: recipe.id, user_id: current_user.id).exists? ? "golden-border" : "shadow-sm rounded-10" %>">
+            <%= link_to recipe_path(recipe), class: "recipe-card-link" do %>
               <%# image %>
               <div>
-                <%= cl_image_tag recipe.photo.key, class: "recipe-show-img shadow rounded-10-top" %>
+                <%= cl_image_tag recipe.photo.key, class: "recipe-show-img rounded-10-top" %>
               </div>
+            <% end %>
+
               <%# informations %>
-              <div class="rounded-10-bottom shadow bg-white p-3">
+              <div class="rounded-10-bottom bg-white p-3">
                 <%# nom de la recette %>
                 <h3><%= recipe.name %></h1>
 
@@ -100,11 +102,11 @@
 
                 <%# keywords %>
                 <% recipe.keyword_list.each do |keyword| %>
-                  <h5 class="keyword <%= "kw-" + keyword %>"><%= keyword.capitalize %></h5>
+                  <a href="/recipes?query=<%= keyword %>"><h5 class="keyword <%= "kw-" + keyword %>"><%= keyword.capitalize %></h5></a>
                 <% end %>
               </div>
             </div>
-            <% end %>
+
           <% end %>
         </div>
 

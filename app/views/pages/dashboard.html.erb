@@ -1,18 +1,29 @@
 <div data-controller="badge-modal" class="col-11 mx-auto mt-3">
 
   <div data-controller="dropdown-dashboard" class="profile-banner bg-white rounded-10 my-3 shadow">
-    <i data-action="click->dropdown-dashboard#toggle" class="fa-solid fa-list edit"></i>
     <!-- Dropdown menu -->
-    <div data-target="dropdown-dashboard.menu" class="dropdown-content d-none">
+    <div data-target="dropdown-dashboard.menu" class="dropdown-content p-3 d-none">
       <a href="#">Edit profile</a>
       <a href="#">Settings</a>
       <%= link_to 'Logout', destroy_user_session_path, data: { "turbo-method": :delete } %>
     </div>
 
-    <%= image_tag("Avatar.png")%>
-    <div>
-      <h1><%= current_user.username %></h1>
-      <p>200xp</p> <%# à remplacer par la barre d'experience %>
+    <div class="col-3 my-auto">
+      <%= image_tag("Avatar.png") %>
+    </div>
+
+    <div class="col-6 text-center">
+      <h1 class="mb-2"><%= current_user.username %></h1>
+      <p class="mb-2"><%= current_user.xp %>/500XP</p>
+      <div class="xp-bar w-100 me-2">
+        <div class="bg-success" style="width: <%= (current_user.xp * 0.2).to_s + "%" %>"></div>
+      </div>
+    </div>
+
+    <div class="col-2 text-end">
+      <i data-action="click->dropdown-dashboard#toggle" class="fa-solid fa-gear edit"></i>
+      <h3 class="mt-2"><%= UserRecipe.where(user_id: current_user.id).count %><span class="country-stars"><i class="fa-solid fa-star"></i></span></h3>
+      <h4 class="mb-0">LVL<%= current_user.lvl %></h4>
     </div>
   </div>
 
