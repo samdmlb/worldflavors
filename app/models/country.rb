@@ -2,8 +2,7 @@ class Country < ApplicationRecord
   has_many :recipes
 
   def flag
-    country_hash = {  france: "fi-fr"
-      
+    country_hash = {  france: "fi-fr",
                       italy: "fi-it",
                       belgium: "fi-be",
                       germany: "fi-de",
