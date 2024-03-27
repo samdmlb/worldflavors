@@ -696,7 +696,7 @@ recipes = [
                               quantity: 50,
                               unit: "g" },
                             ],
-      keywords: ["dessert"]
+      keywords: ["vegetarian"]
   },
   {
     recipe: { name: "Oliebollen",
@@ -1403,7 +1403,7 @@ recipes = [
                             { ingredient_id: Ingredient.find_by(name: "nutmeg").id,
                               quantity: 1/4,
                               unit: "tsp"},],
-      keywords: ["vegan "]
+      keywords: ["vegetarian"]
   },
 {
     recipe: { name: "Ham & cheese Dutch baby pancake",
