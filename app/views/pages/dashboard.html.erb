@@ -15,9 +15,9 @@
 
     <div class="col-6 text-center">
       <h1 class="mb-2"><%= current_user.username %></h1>
-      <p class="mb-2"><%= current_user.xp %>/500XP</p>
+      <p class="mb-2"><%= current_user.xp_modulo %>/500XP</p>
       <div class="xp-bar w-100 me-2">
-        <div style="width: <%= (current_user.xp * 0.2).to_s + "%" %>; background-color: #628C04;"></div>
+        <div style="width: <%= (current_user.xp_modulo * 0.2).to_s + "%" %>; background-color: #628C04;"></div>
       </div>
     </div>
 
@@ -75,7 +75,7 @@
         </div>
 
         <div class="back">
-          <h1><%= @m_last_dish %></h1>
+          <h1><%= @m_last_dish.capitalize %></h1>
         </div>
 
       </div>
@@ -105,7 +105,7 @@
         </div>
 
         <div class="back">
-          <h1><%= @m_favorite_country %></h1>
+          <h1><%= @m_favorite_country.capitalize %></h1>
         </div>
 
       </div>
@@ -120,7 +120,7 @@
         </div>
 
         <div class="back">
-          <h1><%= @m_most_ingredient %></h1>
+          <h1><%= @m_most_ingredient.capitalize %></h1>
         </div>
 
       </div>

@@ -1,6 +1,7 @@
-<div class="col-11 mx-auto mt-3" data-controller="servings" data-servings-default-servings="<%= @recipe.servings %>">
+<div class="show-background">
+<div class="col-11 mx-auto" data-controller="servings" data-servings-default-servings="<%= @recipe.servings %>">
 
-
+  <div class="p-2"></div>
 
   <%# image %>
   <div class="col-lg d-flex justify-content-center">
@@ -98,12 +99,15 @@
     <% if UserRecipe.where(recipe_id: @recipe.id, user_id: current_user.id).exists? %>
       <div class="bouton-invalid">You already cooked this recipe</div>
     <% else %>
-      <%= simple_form_for [@recipe, @user_recipe] do |f| %>
-        <%= f.input :photo, as: :file, label: "Upload a picture to validate the recipe" %>
-        <%= f.button :submit, 'Validate recipe', class: 'bouton-validate' %>
-      <% end %>
+      <div class="bg-info px-3 pt-2 pb-1 m-2 shadow-sm rounded-10">
+        <%= simple_form_for [@recipe, @user_recipe] do |f| %>
+          <%= f.input :photo, as: :file, label: "Upload a picture to validate the recipe" %>
+          <%= f.button :submit, 'Validate recipe', class: 'bouton-validate' %>
+        <% end %>
+      </div>
     <% end %>
   </div>
 
   <div style="height:20px"></div>
+</div>
 </div>
