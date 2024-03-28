@@ -133,18 +133,26 @@
 <div class="modal fade" id="badge-modal" tabindex="-1" role="dialog">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
-      <div class="modal-body mx-auto rounded-10">
+      <div class="modal-header bg-white">
+        <h2>Badges inventory</h2>
+      </div>
+
+      <div class="modal-body modal-body-height mx-auto">
 
         <%# badges débloqués %>
         <div class="d-flex flex-wrap justify-content-around">
-          <% @badges_won.each do |badge| %>
-            <div data-badge-id="<%= badge.id %>" data-action="click->badge-modal#selectBadge" class="mb-2" style="height: auto; width: 30%;">
-              <% if badge.icon %>
-                  <%= image_tag(badge.icon, style: "width: 100%") %>
-              <% else %>
-                <h1><%= badge.name %></h1>
-              <% end %>
-            </div>
+          <% if @badges_won.empty? %>
+            <h3>No badges unlocked yet...</h3>
+          <% else %>
+            <% @badges_won.each do |badge| %>
+              <div data-badge-id="<%= badge.id %>" data-action="click->badge-modal#selectBadge" class="mb-2" style="height: auto; width: 30%;">
+                <% if badge.icon %>
+                    <%= image_tag(badge.icon, style: "width: 100%") %>
+                <% else %>
+                  <h1><%= badge.name %></h1>
+                <% end %>
+              </div>
+            <% end %>
           <% end %>
         </div>
 
@@ -160,6 +168,12 @@
             <% end %>
           <% end %>
         </div>
+      </div>
+      <div class="modal-footer"></div>
+
+      <%# Bouton pour fermer le modal %>
+      <div class="d-inline-block mx-auto">
+        <button type="button" class="bouton-close mt-4" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
