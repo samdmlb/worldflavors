@@ -27,7 +27,7 @@
 }
 
 .button-flag {
-  padding: 15px 25px;
+  padding: 10px 25px;
 }
 
 .button-country {
@@ -35,6 +35,10 @@
   transform: translateX(-50%);
   z-index: 1000;
   cursor: pointer;
+}
+
+.flag-border {
+  box-shadow: 0 0 10px white;
 }
 
 #button-france {
@@ -110,4 +114,14 @@
 #button-denmark {
   top: 885px;
   left: 885px;
+}
+
+#button-iceland {
+  top: 200px;
+  left: 280px;
+}
+
+#button-bulgaria {
+  top: 1500px;
+  left: 1530px;
 }
