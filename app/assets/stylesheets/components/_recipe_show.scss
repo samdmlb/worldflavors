@@ -20,10 +20,10 @@
 
 .bouton-invalid {
   padding: 8px 32px;
-  background-color: white;
-  color: $my-green;
+  background-color: $my-yellow;
+  color: $ocre;
   font-size: 18px;
-  border: 1px solid $my-green;
+  border: 1px solid $ocre;
   border-radius: 10px;
   cursor: pointer;
 }
@@ -51,4 +51,14 @@
   margin-left: 8px;
   align-items:center;
   justify-content:center;
+}
+
+.show-background {
+  background: url(background-fruit.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: right;
+  min-height: 100vh;
+  height: 100%;
 }
