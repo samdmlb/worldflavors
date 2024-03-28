@@ -10,7 +10,49 @@
 
     <% if user_signed_in? %>
 
-<p>ICI</p>
+      <p>AVANT CARROUSSEL</p>
+
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+
+      <!-- Première slide -->
+      <div class="carousel-item active">
+        <div class="carousel-caption">
+          <h5>Welcome back <%= current_user.username %> !</h5>
+          <p>Contenu de la première slide...</p>
+        </div>
+      </div>
+
+      <!-- Deuxième slide -->
+      <div class="carousel-item">
+        <div class="carousel-caption">
+          <h5>Titre de la deuxième slide</h5>
+          <p>Contenu de la deuxième slide...</p>
+        </div>
+      </div>
+
+      <!-- Troisième slide -->
+      <div class="carousel-item">
+        <div class="carousel-caption">
+          <h5>Titre de la troisième slide</h5>
+          <p>Contenu de la troisième slide...</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contrôles du carrousel -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+
+      <P>APPRES CARROUSSEL</P>
 
       <h3 class="mx-auto text-center mt-5">Welcome back <%= current_user.username %> !</h3>
       <div class="mx-auto mt-4">

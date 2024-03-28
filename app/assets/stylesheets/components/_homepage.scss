@@ -68,3 +68,39 @@
   min-height: 100vh;
   height: 100%;
 }
+
+
+.bg-test {
+  background-color: rgb(255, 254, 238);
+}
+
+#div-home {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 2px solid rgba(183, 200, 51, 0.6);
+  border-radius: 6px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  margin-bottom: 12px;
+  border-image: round;
+}
+
+
+#font-slogan {
+  font-family: "Delicious Handrawn", cursive;
+  color: rgb(81, 112, 10);
+  font-size: 30px;
+  padding: 10px;
+  font-weight: 400;
+  font-style: normal;
+}
+
+#font-new-sign-up {
+  font-size: 25px;
+  font-weight: 510;
+  color: $my-green;
+}
+
+.demi-br {
+  display: block;
+  height: 1.0em;
+}
