@@ -31,7 +31,7 @@
 
     <%= render "shared/flashes" %>
 
-    <div class="<%= "body-margin" unless current_page?(root_path) || devise_controller? %> <%= "body-margin-76" if current_page?(recipes_path) || current_page?(cookbook_path) %>">
+    <div class="<%= "body-margin-76" unless current_page?(root_path) || devise_controller? %>">
       <%= yield %>
     </div>
 

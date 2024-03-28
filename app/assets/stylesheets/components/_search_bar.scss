@@ -1,17 +1,17 @@
 .filter-button {
   display: flex;
   align-items: center;
-  background-color: $my-green;
+  background-color: $ocre;
   border-radius: 8px;
   font-size: 24px;
   padding: 0px 8px;
   margin-right: 20px;
-  color: white;
+  color: $my-yellow;
 }
 
-.filter-button:hover {
-  background-color: #7A9D2A;
-}
+// .filter-button:hover {
+//   background-color: #7A9D2A;
+// }
 
 .filter-menu {
   background-color: white;
@@ -22,11 +22,12 @@
   border-radius: 10px;
   margin-top: 54px;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  accent-color: $my-green;
+  accent-color: $ocre;
 }
 
 .search-field {
   border-radius: 20px !important;
+  background-color: $my-yellow;
 }
 
 .search-field::placeholder {
@@ -45,7 +46,7 @@ input:focus::placeholder {
 
 .search-loupe {
   border-radius: 50%;
-  background-color: $my-green;
+  background-color: $ocre;
   width: 42px;
   height: 100%;
   padding: 0;
@@ -53,12 +54,12 @@ input:focus::placeholder {
 }
 
 .search-loupe-icon {
-  color: white;
+  color: $my-yellow;
 }
 
-.search-loupe:hover {
-  background-color: #7A9D2A;
-}
+// .search-loupe:hover {
+//   background-color: #7A9D2A;
+// }
 
 .modal {
   margin-top: 30px;

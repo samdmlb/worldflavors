@@ -4,6 +4,10 @@
   color: $my-green;
 }
 
+.bgt-white {
+  text-shadow: 0px 0px 50px white;
+}
+
 .homepage input {
   border-radius: 10px;
 }
@@ -20,7 +24,7 @@
 
 .homepage a {
   color: $my-green;
-  font-size: 14px;
+  font-size: 18px;
   margin-bottom: none;
 }
 
@@ -53,4 +57,18 @@
 .bouton-login-little:hover {
   background-color: #7A9D2A;
   color: white;
+}
+
+.home-background {
+  background: url(background-fruit.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  min-height: 100vh;
+  height: 100%;
+}
+
+.bg-test {
+  background-color: rgb(255, 254, 238);
 }
