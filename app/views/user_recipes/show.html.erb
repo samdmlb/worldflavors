@@ -1,96 +1,110 @@
-<% ub_string = @user_badges.map { |ub| ub.badge.name }.join(", ") %>
+<div class="cookbook-background py-3">
 
-<div data-controller="number-animation" class="col-11 mx-auto" data-badges="<%= ub_string %>">
+  <% ub_string = @user_badges.map { |ub| ub.badge.name }.join(", ") %>
 
-  <%# Affichage du fond "Congrats" en cas de badge obtenu %>
-  <%# <div>
-    <% if @user_badges.exists? %>
-      <%# <div> %>
-        <%# Si temps Mieux régler le responsive de l'image %>
-        <%# <div id="congrats"> %>
-          <%# <%= image_tag("Congrats31.png") %>
-        <%# </div> %>
-    <%# <% end %>
-  <%# </div> %>
+  <div data-controller="number-animation" class="col-11 mx-auto" data-badges="<%= ub_string %>">
 
-  <div class="rounded-10 shadow-sm bg-white px-3 pt-3 my-3">
-    <div class="justify-content-center">
-    <%# ATTENTION - revenir dessus insérer l'image du cloudinary %>
-
-
-      <div class="image-container">
-        <% if @user_recipe.photo.attached? %>
-          <%= cl_image_tag @user_recipe.photo.key, class: "recipe-show-img rounded-10" %>
-        <% else %>
-          <%= cl_image_tag @user_recipe.photo.key, class: "recipe-show-img rounded-10" %>
-        <% end %>
-        <div class="overlay" data-number-animation-target="overlay"></div>
-      </div>
-
-
-    </div>
-    <div class="d-flex justify-content-center">
-      <div data-number-animation-target="recipeNameDiv">
-        <div id="recipe-name" data-number-animation-target="recipeNameContent">
-          <p class="recipe-name delicious-handrawn-regular mb-1"><i><span data-number-animation-target="recipeNameText"><%= @user_recipe.recipe.name %></span></i></p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <%# Affichage de la mention en fonction de l'acquisition de badge ou non %>
-  <%# <div> %>
-    <%# <% if @user_badges.exists? %>
-      <%# <h1 id="police-congrats">Congrats!</h1> %>
-    <%# <% else %>
-      <%# <h2 id="police-no-badge" class="div-no-badge">No badges this time!</h2> %>
-    <%# <% end %>
-  <%# </div> %>
-
-  <%# Deuxième moitié de carte - prendre tout l'espace de la carte %>
-  <div id="bas-de-carte" data-action="click->number-animation#overlayAnimation">
-    <div class="rounded-10 shadow-sm bg-white p-3 my-0">
-      <%# ne doit apparaître que si badge gagné %>
+    <%# Affichage du fond "Congrats" en cas de badge obtenu %>
+    <%# <div>
       <% if @user_badges.exists? %>
-        <h1 class="text-center">Congrats! <span data-action="click->number-animation#confetti">🎉</span></h1>
-        <h1 class="text-center">You earned <%= @user_badges.count %> badge<%="s" if @user_badges.count>1%>!</h1>
+        <%# <div> %>
+          <%# Si temps Mieux régler le responsive de l'image %>
+          <%# <div id="congrats"> %>
+            <%# <%= image_tag("Congrats31.png") %>
+          <%# </div> %>
+      <%# <% end %>
+    <%# </div> %>
 
-        <%# PB AFFICHAGE 1 OU PLUSIEURS BADGE = alterner entre justifyjustify-content-center et justify-content-between%>
-        <div class="d-flex justify-content-around">
-          <%# itération sur les badge gagnés pour les affichés %>
-          <% @user_badges.each do |user_badge| %>
-            <div id="zone-badge">
-              <div>
-                <% if user_badge.badge.icon %>
-                  <%= image_tag(user_badge.badge.icon, style: "height: 90px; width: auto;") %>
-                <% else %>
-                  <h5><%= user_badge.badge.name %></h5>
-                <% end %>
-              </div>
-              <div><%= user_badge.badge.name %></div>
-            </div>
+    <div class="rounded-10 shadow-sm bg-white px-3 pt-3 mb-3">
+      <div class="justify-content-center">
+      <%# ATTENTION - revenir dessus insérer l'image du cloudinary %>
+
+
+        <div class="image-container">
+          <% if @user_recipe.photo.attached? %>
+            <%= cl_image_tag @user_recipe.photo.key, class: "recipe-show-img rounded-10" %>
+          <% else %>
+            <%= cl_image_tag @user_recipe.photo.key, class: "recipe-show-img rounded-10" %>
           <% end %>
+          <div class="overlay" data-number-animation-target="overlay"></div>
         </div>
-      <% else %>
-        <h1 class="text-center mb-4">No badges this time...</h1>
-        <h1 class="text-center">Keep exploring our recipes to unlock badges!</h1>
-      <% end %>
 
+
+      </div>
+      <div class="d-flex justify-content-center">
+        <div data-number-animation-target="recipeNameDiv">
+          <div id="recipe-name" data-number-animation-target="recipeNameContent">
+            <p class="recipe-name delicious-handrawn-regular mb-1"><i><span data-number-animation-target="recipeNameText"><%= @user_recipe.recipe.name %></span></i></p>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div class="bg-white pb-3 mt-3 rounded-10">
-        <%# <%# <img class="avatar" alt="avatar" src="/assets/Avatar.png"> %>
-        <div class="text-center mt-3">
-          <%= image_tag("Avatar.png", class: "avatar") %>
-        </div>
-        <div class="my-0.5 text-center">
-          <h3><%= @user_recipe.user.username %></h3>
-        </div>
-        <%= render "shared/xp_bar"%>
-    </div>
+    <%# Affichage de la mention en fonction de l'acquisition de badge ou non %>
+    <%# <div> %>
+      <%# <% if @user_badges.exists? %>
+        <%# <h1 id="police-congrats">Congrats!</h1> %>
+      <%# <% else %>
+        <%# <h2 id="police-no-badge" class="div-no-badge">No badges this time!</h2> %>
+      <%# <% end %>
+    <%# </div> %>
 
+    <%# Deuxième moitié de carte - prendre tout l'espace de la carte %>
+    <div id="bas-de-carte" data-action="click->number-animation#overlayAnimation">
+      <div class="rounded-10 shadow-sm bg-white p-3 my-0">
+        <%# ne doit apparaître que si badge gagné %>
+        <% if @user_badges.exists? %>
+          <h1 class="text-center">Congrats! <span data-action="click->number-animation#confetti">🎉</span></h1>
+          <h1 class="text-center">You earned <%= @user_badges.count %> badge<%="s" if @user_badges.count>1%>!</h1>
+
+          <%# PB AFFICHAGE 1 OU PLUSIEURS BADGE = alterner entre justifyjustify-content-center et justify-content-between%>
+          <div class="d-flex justify-content-around">
+            <%# itération sur les badge gagnés pour les affichés %>
+            <% @user_badges.each do |user_badge| %>
+              <div id="zone-badge">
+                <div>
+                  <% if user_badge.badge.icon %>
+                    <%= image_tag(user_badge.badge.icon, style: "height: 90px; width: auto;") %>
+                  <% else %>
+                    <h5><%= user_badge.badge.name %></h5>
+                  <% end %>
+                </div>
+                <div><%= user_badge.badge.name %></div>
+              </div>
+            <% end %>
+          </div>
+        <% else %>
+          <h1 class="text-center mb-4">No badges this time...</h1>
+          <h1 class="text-center">Keep exploring our recipes to unlock badges!</h1>
+        <% end %>
+
+      </div>
+
+      <div class="bg-white pb-3 mt-3 rounded-10">
+          <%# <%# <img class="avatar" alt="avatar" src="/assets/Avatar.png"> %>
+          <div class="text-center mt-3">
+            <%= image_tag("Avatar.png", class: "avatar") %>
+          </div>
+          <div class="my-0.5 text-center">
+            <h3><%= @user_recipe.user.username %></h3>
+          </div>
+          <%= render "shared/xp_bar"%>
+      </div>
+
+
+    </div>
 
   </div>
+  </div>
+</div>
 
-</div>
-</div>
+<%# script pour passer à un body sans marge pour que le background prenne toute la page %>
+<script>
+   document.addEventListener('DOMContentLoaded', function() {
+    var bodyMarginElement = document.querySelector('.body-margin');
+    if (bodyMarginElement) {
+      bodyMarginElement.classList.remove('body-margin');
+      bodyMarginElement.classList.add('user-recipe-page');
+    }
+  });
+</script>
