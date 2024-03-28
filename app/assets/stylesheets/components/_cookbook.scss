@@ -72,10 +72,8 @@
 
 .cookbook-background {
   background: url(cookbook-background.jpg);
-  background-size: auto;
-
-}
-
-.cookbook-background body {
-  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  height: 100vh;
 }
