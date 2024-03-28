@@ -5,7 +5,7 @@
       <div class="modal-content rounded">
 
         <%# Header du modal avec le nombre de résultats %>
-        <div class="modal-header bg-white">
+        <div class="modal-header bg-success">
           <% if @searched_recipes.empty? %>
             <h2 class="modal-title">No results</h2>
           <% else %>
@@ -14,7 +14,7 @@
         </div>
 
         <%# Body du modal avec iteration de l'array searched_recipes qui regroupe les recettes recherchées %>
-        <div class="modal-body modal-body-height d-block pb-0">
+        <div class="modal-body modal-body-height d-block pb-0 bg-success">
 
           <%# Si pas de résultat affiche un logo et no result found %>
           <% if @searched_recipes.empty? %>
@@ -64,7 +64,7 @@
             <% end %>
 
               <%# informations %>
-              <div class="rounded-10-bottom bg-white p-3">
+              <div class="rounded-10-bottom bg-info p-3">
                 <%# nom de la recette %>
                 <h3><%= recipe.name %></h1>
 
@@ -111,7 +111,7 @@
         </div>
 
         <%# petite barre blanche en bas %>
-        <div class="modal-footer"></div>
+        <div class="modal-footer bg-success"></div>
 
         <%# Bouton pour fermer le modal %>
         <div class="d-inline-block mx-auto">

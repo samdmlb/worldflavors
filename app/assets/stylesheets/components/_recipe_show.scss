@@ -7,15 +7,15 @@
 
 .bouton-validate {
   padding: 8px 32px;
-  background-color: $my-green;
-  color: white;
+  background-color: $ocre;
+  color: $my-yellow;
   font-size: 20px;
   border-radius: 10px;
 }
 
 .bouton-validate:hover {
-  background-color: #7A9D2A;
-  color: white;
+  background-color: $ocre;
+  color: $my-yellow;
 }
 
 .bouton-invalid {
