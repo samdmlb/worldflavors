@@ -20,7 +20,7 @@ p "Current database deleted!"
 
 p "Creating countries..."
 
-countries = ["france", "italy", "spain", "greece", "germany", "bulgary", "poland", "england", "portugal", "sweden", "belgium", "netherlands", "denmark",
+countries = ["france", "italy", "spain", "greece", "germany", "bulgaria", "poland", "england", "portugal", "sweden", "belgium", "netherlands", "denmark",
              "switzerland", "iceland"]
 
 countries.each do |country|
@@ -1275,7 +1275,7 @@ recipes = [
                 xp: 200,
                 difficulty: "easy",
                 prep_time: 20,
-                country_id: Country.find_by(name: "bulgary").id,
+                country_id: Country.find_by(name: "bulgaria").id,
                 url: "https://bonvoyageurs.com/wp-content/uploads/2014/08/vae2sc6a.jpg" },
       steps: ["Cut the meat into cubes or small pieces and fry in a pan with a little oil for about 5 minutes. Add the chopped onions, beef stock and paprika, 5 minutes later add the mushrooms and rice and simmer for about 15 minutes.",
               "Add the chopped tomatoes, add salt to taste, the butter, 1 tbs. sugar and whole olives, and cook for further 5 minutes.", "Preheat oven to 190C. Transfer the content of the pan into a baking dish and cook for about 30 minutes. Sprinkle with parsley and pepper before serving."],
@@ -1320,7 +1320,7 @@ recipes = [
                 xp: 200,
                 difficulty: "easy",
                 prep_time: 20,
-                country_id: Country.find_by(name: "bulgary").id,
+                country_id: Country.find_by(name: "bulgaria").id,
                 url: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhq1az4GybbS0-hIMXzYWbzh9jXZadNZXsAAtnSPi8Y8LBOBopUiZILmjhyphenhyphen4HoxJFTfnS7zllhjpcHXDy7Ymz31U_Mut_r0L3iFr5Nsrv09_WDSXlbF_eC3cohwBrNK6TwLYTvH2sTkxnw/s1600/Recepti.ezine.bg.jpg" },
       steps: ["Boil the chopped spinach in salted water for about 15-20 minutes, drain, leave to cool for 10-15 minutes, then puree. Heat a pan, melt the butter, add the flour, stir well, fry for 1-2 minutes, then add the pureed spinach.", "Add the milk and 200ml of the water in which the spinach was cooked. Simmer for 5-10 minutes and season with pepper.",
               "Serve with croutons (bread cubes fried in butter)."],
@@ -1344,7 +1344,7 @@ recipes = [
                 xp: 200,
                 difficulty: "easy",
                 prep_time: 20,
-                country_id: Country.find_by(name: "bulgary").id,
+                country_id: Country.find_by(name: "bulgaria").id,
                 url: "https://i0.wp.com/travellingbuzz.com/wp-content/uploads/2015/04/snejanka.jpg?ssl=1" },
       steps: ["Snezhanka – dip style version. Peel the skin of the cucumber using a potato peeler, chop in small pieces, squeeze between your hands to drain most of the water, season with salt, add the chopped garlic, olive oil and dill, and leave for 10 minutes.",
               "Then add the yogurt and chill for at least 1 hour before serving."],
