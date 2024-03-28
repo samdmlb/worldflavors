@@ -9,7 +9,7 @@
 
 
   <%# informations %>
-  <div class="rounded-10 shadow-sm bg-white p-3 my-3">
+  <div class="rounded-10 shadow-sm bg-info p-3 my-3">
     <%# nom de la recette %>
     <h1><%= @recipe.name %></h1>
 
@@ -56,20 +56,20 @@
   <div class="d-inline-block shadow-sm">
     <div class="d-flex">
       <%# bouton - %>
-      <div class="py-1 px-3 bg-white servings-minus" data-action="click->servings#minus">-</div>
+      <div class="py-1 px-3 bg-info servings-minus" data-action="click->servings#minus">-</div>
       <%# "Serves" et l'input de servings %>
-      <div class="p-2 bg-white servings-field-div">
+      <div class="p-2 bg-info servings-field-div">
         <span class="servings-serves">Serves</span>
         <input type="number" class="servings-field" min="1" max="30" value="<%= @recipe.servings %>" data-servings-target="servingsNumber" data-action="input->servings#updateQuantities">
       </div>
       <%# bouton + %>
-      <div class="py-1 px-3 bg-white servings-plus" data-action="click->servings#plus">+</div>
+      <div class="py-1 px-3 bg-info servings-plus" data-action="click->servings#plus">+</div>
     </div>
   </div>
 
 
   <%# ingredients %>
-  <div class="rounded-10 shadow-sm bg-white p-3 my-3">
+  <div class="rounded-10 shadow-sm bg-info p-3 my-3">
     <h2 class="mb-3">Ingredients:</h2>
     <% @recipe_ingredients.each do |ri| %>
       <p>
@@ -82,7 +82,7 @@
 
 
   <%# steps %>
-  <div class="rounded-10 shadow-sm bg-white p-3 my-3">
+  <div class="rounded-10 shadow-sm bg-info p-3 my-3">
     <h2 class="mb-3">Method:</h2>
     <% @steps.each do |step| %>
       <div>
@@ -104,4 +104,6 @@
       <% end %>
     <% end %>
   </div>
+
+  <div style="height:20px"></div>
 </div>

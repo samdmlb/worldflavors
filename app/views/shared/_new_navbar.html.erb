@@ -1,24 +1,24 @@
 <div class="col-12 border-top fixed-bottom bg-info">
-  <div class="col-10 mx-auto my-3 d-flex justify-content-between">
+  <div class="col-10 mx-auto mb-1 mt-3 d-flex justify-content-between">
 
     <%= link_to cookbook_path, class: "text-decoration-none text-warning #{'active-nav-page' if current_page?(cookbook_path)}" do %>
       <div class="text-center" style="width: 5em">
-        <i class="fa-solid fa-book" style="font-size: 1.5rem"></i>
-        <p class="m-0" style="font-size: 0.625rem">Cookbook</p>
+        <i class="fa-solid fa-book" style="font-size: 2rem"></i>
+        <p class="m-0" style="font-size: 1rem">Cookbook</p>
       </div>
     <% end %>
 
     <%= link_to recipes_path, class: "text-decoration-none text-warning #{'active-nav-page' if current_page?(recipes_path)}" do %>
       <div class="text-center" style="width: 5em">
-        <i class="fa-solid fa-map" style="font-size: 1.5rem"></i>
-        <p class="m-0" style="font-size: 0.625rem">Map</p>
+        <i class="fa-solid fa-map" style="font-size: 2rem"></i>
+        <p class="m-0" style="font-size: 1rem">Map</p>
       </div>
     <% end %>
 
     <%= link_to dashboard_path, class: "text-decoration-none text-warning #{'active-nav-page' if current_page?(dashboard_path)}" do %>
       <div class="text-center" style="width: 5em">
-        <i class="fa-solid fa-user" style="font-size: 1.5rem"></i>
-        <p class="m-0" style="font-size: 0.625rem">Dashboard</p>
+        <i class="fa-solid fa-user" style="font-size: 2rem"></i>
+        <p class="m-0" style="font-size: 1rem">Dashboard</p>
       </div>
     <% end %>
 

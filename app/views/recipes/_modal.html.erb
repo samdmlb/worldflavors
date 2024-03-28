@@ -2,17 +2,17 @@
   <div class="modal-dialog modal-dialog-centered mt-5">
     <div class="modal-content">
 
-      <div class="modal-header">
+      <div class="modal-header bg-success">
         <h2 class="modal-title"><span class="fi <%= country.flag %>"></span> <%= country.name.capitalize %></h2>
         <h2> <%= UserRecipe.where(user: current_user).joins(recipe: :country).where(countries: { id: country.id }).count %>/<%= recipes_count %> <i class="fa-solid fa-star country-stars"></i></h2>
       </div>
 
-      <div class="modal-body d-block pb-0">
+      <div class="modal-body d-block pb-0 bg-success">
         <%= render 'carousel', recipes: Recipe.where(country_id: country.id), country: country %>
       </div>
 
       <%# petite barre blanche en bas %>
-        <div class="modal-footer"></div>
+        <div class="modal-footer bg-success"></div>
 
         <%# Bouton pour fermer le modal %>
         <div class="d-inline-block mx-auto pb-5">

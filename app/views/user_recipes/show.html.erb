@@ -51,7 +51,7 @@
 
     <%# Deuxième moitié de carte - prendre tout l'espace de la carte %>
     <div id="bas-de-carte" data-action="click->number-animation#overlayAnimation">
-      <div class="rounded-10 shadow-sm bg-white p-3 my-0">
+      <div class="rounded-10 shadow-sm bg-info p-3 my-0">
         <%# ne doit apparaître que si badge gagné %>
         <% if @user_badges.exists? %>
           <h1 class="text-center">Congrats! <span data-action="click->number-animation#confetti">🎉</span></h1>
@@ -80,7 +80,7 @@
 
       </div>
 
-      <div class="bg-white pb-3 mt-3 rounded-10">
+      <div class="bg-info pb-3 mt-3 rounded-10">
           <%# <%# <img class="avatar" alt="avatar" src="/assets/Avatar.png"> %>
           <div class="text-center mt-3">
             <%= image_tag("Avatar.png", class: "avatar") %>

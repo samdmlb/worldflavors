@@ -17,7 +17,7 @@
       <h1 class="mb-2"><%= current_user.username %></h1>
       <p class="mb-2"><%= current_user.xp %>/500XP</p>
       <div class="xp-bar w-100 me-2">
-        <div class="bg-success" style="width: <%= (current_user.xp * 0.2).to_s + "%" %>"></div>
+        <div style="width: <%= (current_user.xp * 0.2).to_s + "%" %>; background-color: #628C04;"></div>
       </div>
     </div>
 
@@ -134,11 +134,11 @@
 <div class="modal fade" id="badge-modal" tabindex="-1" role="dialog">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
-      <div class="modal-header bg-white">
+      <div class="modal-header bg-success">
         <h2>Badges inventory</h2>
       </div>
 
-      <div class="modal-body modal-body-height mx-auto">
+      <div class="modal-body modal-body-height mx-auto bg-info">
 
         <%# badges débloqués %>
         <div class="d-flex flex-wrap justify-content-around">
@@ -170,7 +170,7 @@
           <% end %>
         </div>
       </div>
-      <div class="modal-footer"></div>
+      <div class="modal-footer bg-success"></div>
 
       <%# Bouton pour fermer le modal %>
       <div class="d-inline-block mx-auto">
