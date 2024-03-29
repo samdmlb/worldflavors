@@ -4,8 +4,8 @@
   <div data-controller="dropdown-dashboard" class="profile-banner bg-info rounded-10 mb-3 shadow">
     <!-- Dropdown menu -->
     <div data-target="dropdown-dashboard.menu" class="dropdown-content p-3 d-none">
-      <a href="#">Edit profile</a>
-      <a href="#">Settings</a>
+      <%# <a href="#">Edit profile</a>
+      <a href="#">Settings</a> %>
       <%= link_to 'Logout', destroy_user_session_path, data: { "turbo-method": :delete } %>
     </div>
 
