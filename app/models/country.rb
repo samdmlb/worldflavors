@@ -10,7 +10,7 @@ class Country < ApplicationRecord
                       ireland: "fi-ie",
                       portugal: "fi-pt",
                       spain: "fi-es",
-                      england: "fi-gb",
+                      england: "fi-gb-eng",
                       switzerland: "fi-ch",
                       poland: "fi-pl",
                       norway: "fi-no",
