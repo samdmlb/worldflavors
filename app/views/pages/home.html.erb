@@ -1,9 +1,7 @@
 <div class="home-background">
   <div class="col-9 mx-auto d-flex flex-column justify-content-center homepage" style="height: 100vh">
-    <%# <div class="d-flex justify-content-around bgt-white">
-      <h1>WorldFlavors</h1>
-    </div>
-    <div class="mx-auto text-center mt-4 bgt-white">
+
+    <%# <div class="mx-auto text-center mt-4 bgt-white">
       <h3>"Spice up your daily routine with a pinch of discovery!"</h3>
     </div> %>
 
@@ -11,7 +9,9 @@
     <% if user_signed_in? %>
 
       <div id="div-home">
-
+        <div class="d-flex justify-content-around bgt-white">
+          <h1>WorldFlavors</h1>
+        </div>
         <h3 class="mx-auto text-center mt-5" id="font-new-sign-up">Welcome back <%= current_user.username %> !</h3>
         <div class="mx-auto mt-4">
           <%= link_to recipes_path do%>
